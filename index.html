@@ -1,81 +1,720 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Molly Liu</title>
-  <meta name="description" content="Finance × AI × Crypto" />
+  <title>Molly Liu — Personal Website</title>
+  <meta name="description" content="Molly Liu — stories, systems, and ideas turning into impact." />
+
+  <!-- Simple, minimal CSS. No frameworks. -->
   <style>
-    :root { --bg:#0b0d10; --card:#12151b; --text:#e8eef7; --muted:#a9b4c2; --accent:#6ae4ff; }
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;        /* slate-900 */
+      --muted:#475569;       /* slate-600 */
+      --faint:#94a3b8;       /* slate-400 */
+      --border:#e2e8f0;      /* slate-200 */
+      --card:#ffffff;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --radius: 18px;
+      --max: 1080px;
+    }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(900px 500px at 20% 0%, #132033 0%, var(--bg) 55%);color:var(--text)}
-    a{color:var(--text);text-decoration:none} a:hover{color:var(--accent)}
-    .wrap{max-width:980px;margin:0 auto;padding:48px 20px}
-    .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
-    .nav a{margin-left:14px;color:var(--muted)}
-    h1{font-size:44px;line-height:1.05;margin:0}
-    .tag{color:var(--muted);font-size:16px;max-width:68ch}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-    .btn{padding:10px 14px;border-radius:12px;background:var(--card);border:1px solid #222a35}
-    .btn.primary{background:linear-gradient(180deg,#1a2a44,#111826);border-color:#2b3e5e}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:26px}
-    .card{grid-column:span 6;background:rgba(18,21,27,.85);border:1px solid #222a35;border-radius:16px;padding:16px}
-    .card h3{margin:0 0 6px;font-size:16px}
-    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
-    .full{grid-column:span 12}
-    footer{margin-top:40px;color:var(--muted);font-size:13px}
-    @media (max-width:800px){ .card{grid-column:span 12} h1{font-size:36px} }
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      background:var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    /* Subtle animated gradient glow */
+    .bg-glow{
+      position:fixed;
+      inset:-20%;
+      z-index:-1;
+      pointer-events:none;
+      filter: blur(70px);
+      opacity: .35;
+      background:
+        radial-gradient(closest-side at 20% 30%, rgba(56,189,248,.35), transparent 65%),
+        radial-gradient(closest-side at 80% 20%, rgba(168,85,247,.28), transparent 60%),
+        radial-gradient(closest-side at 60% 80%, rgba(34,197,94,.22), transparent 65%),
+        radial-gradient(closest-side at 10% 80%, rgba(244,114,182,.20), transparent 60%);
+      animation: drift 18s ease-in-out infinite alternate;
+      transform: translate3d(0,0,0);
+    }
+    @keyframes drift{
+      0%{ transform: translate(-2%, -1%) scale(1); }
+      100%{ transform: translate(2%, 1%) scale(1.03); }
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top nav */
+    .nav{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.7);
+      border-bottom:1px solid rgba(226,232,240,.7);
+      z-index:50;
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      font-weight:600;
+      letter-spacing:.2px;
+    }
+    .navlinks{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlinks a{
+      font-size:14px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius: 999px;
+    }
+    .navlinks a:hover{
+      background: rgba(226,232,240,.55);
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    /* Banner */
+    .banner{
+      margin:18px 0 0;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      padding:10px 14px;
+      color:var(--muted);
+      font-size:13px;
+      width: fit-content;
+      background: rgba(255,255,255,.7);
+    }
+
+    /* Sections */
+    section{ padding: 56px 0; }
+    .section-title{
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--faint);
+      margin:0 0 10px;
+    }
+    h1{
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 8px 0 10px;
+      line-height:1.08;
+    }
+    h2{
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 6px 0 12px;
+      line-height:1.2;
+    }
+    p{ margin: 0 0 14px; color: var(--muted); font-size: 16px; }
+    .lead{ font-size: 18px; color: var(--text); max-width: 74ch; }
+    .muted{ color: var(--muted); }
+    .small{ font-size: 13px; color: var(--muted); }
+
+    /* Hero layout */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .hero-card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 6px;
+      background: rgba(255,255,255,.7);
+      box-shadow: 0 1px 0 rgba(15,23,42,.02);
+    }
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin: 12px 0 0;
+      padding-bottom: 12px;
+    }
+    .pill{
+      font-size: 12px;
+      color: var(--muted);
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding: 6px 10px;
+      background: rgba(255,255,255,.75);
+    }
+
+    /* Buttons */
+    .btn-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.85);
+      color: var(--text);
+      font-size: 14px;
+      text-decoration:none;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(241,245,249,.9);
+      text-decoration:none;
+      border-color: #cbd5e1;
+    }
+
+    /* North star */
+    .quote{
+      border-left: 2px solid var(--border);
+      padding-left: 14px;
+      margin: 14px 0 8px;
+      color: var(--muted);
+    }
+    .quote p{ margin: 0 0 10px; }
+
+    /* Card grids */
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px){
+      .grid-3{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 640px){
+      .grid-2,.grid-3{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 1px 0 rgba(15,23,42,.02);
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color:#cbd5e1;
+      box-shadow: var(--shadow);
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:16px;
+      font-weight:600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .card p{
+      margin:0;
+      font-size:15px;
+      color: var(--muted);
+    }
+    .card .meta{
+      margin-top:10px;
+      font-size:13px;
+      color: var(--faint);
+    }
+
+    /* Philosophy cards */
+    .p-card{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 14px 12px;
+      background: rgba(248,250,252,.75);
+    }
+    .p-card strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:14px;
+      color: var(--text);
+    }
+    .p-card span{
+      display:block;
+      font-size:13px;
+      color: var(--muted);
+    }
+
+    /* Lists */
+    .lists{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 14px;
+    }
+    @media (max-width: 800px){
+      .lists{ grid-template-columns: 1fr; }
+    }
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    li{ margin: 8px 0; }
+
+    /* Archive */
+    .filters{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 14px 0 16px;
+    }
+    .filter-btn{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.85);
+      color: var(--muted);
+      cursor:pointer;
+      font-size: 13px;
+    }
+    .filter-btn[aria-pressed="true"]{
+      background: rgba(15,23,42,.06);
+      color: var(--text);
+      border-color:#cbd5e1;
+    }
+
+    .archive-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .archive-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 640px){
+      .archive-grid{ grid-template-columns: 1fr; }
+    }
+    .item{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(255,255,255,.78);
+    }
+    .item h4{
+      margin:0 0 8px;
+      font-size:15px;
+      font-weight:600;
+      color: var(--text);
+    }
+    .item p{
+      margin:0 0 10px;
+      font-size:14px;
+      color: var(--muted);
+    }
+    .tagrow{ display:flex; gap:8px; flex-wrap:wrap; }
+    .tag{
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:4px 8px;
+      background: rgba(255,255,255,.8);
+    }
+
+    /* Footer */
+    footer{
+      padding: 36px 0 46px;
+      border-top: 1px solid rgba(226,232,240,.8);
+      color: var(--muted);
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="nav">
-      <strong>Molly Liu</strong>
-      <div>
-        <a href="#work">Work</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">Molly Liu</div>
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#home">Home</a>
+          <a href="#north-star">North Star</a>
+          <a href="#bio">Bio</a>
+          <a href="#archive">Work & Writing</a>
+          <a href="#connect">Connect</a>
+        </nav>
       </div>
     </div>
-
-    <section class="hero">
-      <h1>Finance × AI × Crypto</h1>
-      <p class="tag">Investor-minded builder exploring tokenization, market structure, and how crypto reaches real users.</p>
-      <div class="btns">
-        <a class="btn primary" href="#projects">See projects</a>
-        <a class="btn" href="mailto:hi@mollyliu.com">Email</a>
-        <a class="btn" href="#">LinkedIn</a>
-        <a class="btn" href="#">X</a>
-      </div>
-    </section>
-
-    <section id="work" class="grid">
-      <div class="card full">
-        <h3>Now</h3>
-        <p>Finance @ Emory (Goizueta) + AI minor. Investing Analyst @ Blockchain at Emory. Previously: quant-heavy secondary market internship at Xiangcai Securities.</p>
-      </div>
-      <div class="card">
-        <h3>Experience</h3>
-        <p>Researching crypto protocols and market structure. Built Python-based stock screening tools combining fundamental and technical signals.</p>
-      </div>
-      <div class="card">
-        <h3>Focus</h3>
-        <p>Crypto go-to-market, tokenized assets, and distribution over incremental tech.</p>
-      </div>
-    </section>
-
-    <section id="projects" class="grid">
-      <div class="card full"><h3>Projects</h3><p>Pick 3–5 with links.</p></div>
-      <div class="card"><h3>RWA Tokenization Landscape</h3><p>Market map + risks. (link)</p></div>
-      <div class="card"><h3>Stock Screening (Python)</h3><p>Valuation + momentum filters. (link)</p></div>
-    </section>
-
-    <section id="contact" class="grid">
-      <div class="card full"><h3>Contact</h3><p>Email · LinkedIn · X</p></div>
-    </section>
-
-    <footer>© <span id="y"></span> Molly Liu</footer>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <main class="container">
+    <!-- HOME -->
+    <div class="banner" role="note">
+      Welcome — this site is still a work in progress as I’m editing and refining it. Thanks for being one of the first to visit.
+    </div>
+
+    <section id="home" aria-label="Home">
+      <div class="hero">
+        <div>
+          <p class="section-title">Home</p>
+          <h1>Molly Liu</h1>
+          <p class="lead">
+            Finance + AI student at Emory University. Curious about how ideas turn into real impact — through stories, systems, and people.
+          </p>
+
+          <p>
+            I’ve spent a long time trying to explain who I am — in college apps, club apps, job apps, and quick elevator pitches.
+            Each time, I was writing for a different audience and leaving parts of myself out.
+          </p>
+          <p>
+            This site is my way of putting everything in one place. I share my goals, background, projects, writing, and things I’m learning —
+            basically, the parts of me I want to put out into the world.
+          </p>
+
+          <p class="small">
+            If you like personality tests, mine would probably say I’m extroverted, intuitive, a thinker, and a planner — I do my best work when things move fast and I’m learning on the fly.
+          </p>
+
+          <div class="btn-row">
+            <!-- Replace # with your real links -->
+            <a class="btn" href="#archive">View work</a>
+            <a class="btn" href="#connect">Contact</a>
+            <a class="btn" href="#" onclick="alert('Add your resume link here'); return false;">Resume</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <p class="section-title" style="margin-bottom:6px;">Quick links</p>
+          <div class="pill-row">
+            <span class="pill">Stories</span>
+            <span class="pill">Systems</span>
+            <span class="pill">Problem-solving</span>
+            <span class="pill">Risk</span>
+            <span class="pill">Travel</span>
+            <span class="pill">Service</span>
+          </div>
+          <p class="small" style="margin:0 0 14px;">
+            Tip: keep this card as “now / currently” updates if you want.
+          </p>
+          <p class="small" style="margin:0 0 6px;"><strong style="color:var(--text); font-weight:600;">Currently:</strong></p>
+          <p class="small" style="margin:0 0 10px;">Editing this site · Collecting writing samples · Organizing projects</p>
+          <p class="small" style="margin:0;">
+            You can also use this space for social links or a short “latest note.”
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- NORTH STAR -->
+    <section id="north-star" aria-label="North Star">
+      <p class="section-title">North Star</p>
+      <h2>A world where ideas are able to reach their telos.</h2>
+      <p class="small">
+        <strong style="color:var(--text); font-weight:600;">Telos</strong> is a Greek concept meaning purposeful direction — the end a thing is moving toward.
+        Not a fixed destiny, but a process of becoming.
+      </p>
+
+      <div class="quote">
+        <p>• I believe ideas matter because they shape how the world works.</p>
+        <p>• I believe the difference between a good idea and a world-changing one is often execution and scale.</p>
+        <p>• I believe better tools — intellectual, financial, and technological — help ideas move closer to their intended impact.</p>
+        <p>• I’m drawn to understanding and working within those tools.</p>
+      </div>
+    </section>
+
+    <!-- BIO -->
+    <section id="bio" aria-label="Bio">
+      <p class="section-title">Bio</p>
+      <h2>Who Am I</h2>
+      <p class="muted">This is the “everything” page — the parts of my story that don’t fit cleanly into an application box.</p>
+
+      <div class="grid-2" role="list">
+        <article class="card" role="listitem">
+          <h3>I’m a storyteller.</h3>
+          <p>
+            I’ve always been drawn to stories — how people explain the world, how ideas spread, and how meaning takes shape.
+            I started college as a theatre major because I love taking something messy or hard to explain and turning it into a narrative that helps people see it differently.
+            When I write or speak, I’m usually trying to answer one simple question: <em>what’s really going on here?</em>
+          </p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>I’m a systems thinker.</h3>
+          <p>
+            I like connecting dots and looking at how things work together — not just outcomes, but <em>why</em> they happen.
+            I’m fascinated by how structures shape outcomes: markets, institutions, incentives, and human behavior.
+            Finance and technology interest me because they make these structures visible, helping me see how ideas survive, fail, or scale in the real world.
+          </p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>I’m a problem solver.</h3>
+          <p>
+            I enjoy problems that don’t come with clear instructions. I like starting from uncertainty, asking better questions,
+            and narrowing things down until something clicks. I’m not attached to one method —
+            I care more about understanding the problem well enough to choose the right tools, and being willing to change my mind when the facts change.
+          </p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>I’m a risk navigator.</h3>
+          <p>
+            I love extreme sports — skiing, rock climbing, anything that forces full attention.
+            To me, risk isn’t recklessness. It’s understanding what could go wrong, preparing for it, and deciding whether the reward is worth it.
+            That mindset carries into how I approach challenges more broadly: I don’t avoid risk — I try to understand it, manage it, and move forward with intention.
+          </p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>I’m a world explorer, searching for my <em>sukha</em>.</h3>
+          <p>
+            Travel helps me feel grounded and open at the same time. I love seeing how people live, how they think, and how culture shapes what feels possible or impossible.
+            Through moving between places and meeting different people, I’m slowly learning what <em>sukha</em> means to me —
+            a sense of ease, alignment, and inner clarity that comes from living honestly with the world, not escaping it.
+          </p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>I’m a service learner.</h3>
+          <p>
+            I care deeply about education, especially for girls. Growing up in a traditional Eastern household where boys were often valued over girls shaped my belief that talent is everywhere, but access is not.
+            That belief led me to found <em>Spotlaw</em>, a theatre-based legal education project that uses storytelling and performance to help students understand the law, question dominant narratives, and recognize their rights.
+          </p>
+          <div class="meta">Spotlaw: <a href="https://spotlaw.org" target="_blank" rel="noreferrer">spotlaw.org</a></div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>I’m still becoming.</h3>
+          <p>
+            I don’t think of myself as finished or fixed. I’m more interested in direction than labels.
+            What stays constant is my curiosity — about the world, about people, and about how ideas turn into reality.
+          </p>
+        </article>
+      </div>
+
+      <!-- Life Philosophy -->
+      <div style="margin-top:44px;">
+        <p class="section-title">Life Philosophy</p>
+        <h2 style="margin-top:0;">A few beliefs I try to live by.</h2>
+
+        <div class="grid-3" role="list">
+          <div class="p-card" role="listitem">
+            <strong>Make the world clearer.</strong>
+            <span>If I understand it deeply, I can explain it simply.</span>
+          </div>
+          <div class="p-card" role="listitem">
+            <strong>Chase truth, not vibes.</strong>
+            <span>I’d rather learn fast than be confidently wrong.</span>
+          </div>
+          <div class="p-card" role="listitem">
+            <strong>Risk is something to study.</strong>
+            <span>Fear isn’t a stop sign — it’s information.</span>
+          </div>
+          <div class="p-card" role="listitem">
+            <strong>Stay ambitious, stay human.</strong>
+            <span>Grow upward without losing empathy downward.</span>
+          </div>
+          <div class="p-card" role="listitem">
+            <strong>Let good ideas earn scale.</strong>
+            <span>Execution is where purpose becomes real.</span>
+          </div>
+          <div class="p-card" role="listitem">
+            <strong>Keep expanding perspective.</strong>
+            <span>Places and people change how I see.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reads & Listens -->
+      <div style="margin-top:44px;">
+        <p class="section-title">Reads &amp; Listens</p>
+        <h2 style="margin-top:0;">Influences</h2>
+
+        <div class="lists">
+          <div class="card">
+            <h3>Books</h3>
+            <ul>
+              <li><em>Principles</em> — Ray Dalio</li>
+              <li><em>The Courage to Be Disliked</em></li>
+              <li><em>When Breath Becomes Air</em></li>
+              <li><em>The Art of War</em></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Podcasts</h3>
+            <ul>
+              <li><em>How I Built This</em></li>
+              <li><em>Invest Like the Best</em></li>
+              <li><em>Planet Money</em></li>
+              <li><em>绝对是个妞：国际月经简报</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHIVE -->
+    <section id="archive" aria-label="Work & Writing">
+      <p class="section-title">Work &amp; Writing</p>
+      <h2>Archive</h2>
+      <p class="muted">A place to keep what I’m working on and what I’m learning. (Add your real entries later.)</p>
+
+      <div class="filters" role="toolbar" aria-label="Filters">
+        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="finance" aria-pressed="false">Finance</button>
+        <button class="filter-btn" data-filter="crypto" aria-pressed="false">Crypto</button>
+        <button class="filter-btn" data-filter="life" aria-pressed="false">Life</button>
+      </div>
+
+      <div class="archive-grid" id="archiveGrid">
+        <!-- Demo items (replace with your real projects/posts) -->
+        <article class="item" data-tags="finance">
+          <h4>Investment Memo Template</h4>
+          <p>A simple structure for turning research into conviction.</p>
+          <div class="tagrow">
+            <span class="tag">Finance</span>
+            <span class="tag">Template</span>
+          </div>
+        </article>
+
+        <article class="item" data-tags="crypto">
+          <h4>Notes on Onchain GDP</h4>
+          <p>Thinking about how “real activity” gets measured in crypto.</p>
+          <div class="tagrow">
+            <span class="tag">Crypto</span>
+            <span class="tag">Market Structure</span>
+          </div>
+        </article>
+
+        <article class="item" data-tags="life">
+          <h4>Travel Field Notes</h4>
+          <p>Small observations from new places and new people.</p>
+          <div class="tagrow">
+            <span class="tag">Life</span>
+            <span class="tag">Travel</span>
+          </div>
+        </article>
+
+        <article class="item" data-tags="crypto finance">
+          <h4>RWA Tokenization Landscape</h4>
+          <p>A map of players, narratives, and what’s actually useful.</p>
+          <div class="tagrow">
+            <span class="tag">Crypto</span>
+            <span class="tag">Finance</span>
+          </div>
+        </article>
+
+        <article class="item" data-tags="finance">
+          <h4>Pitch: What Makes a Great Story</h4>
+          <p>Why the best pitches feel inevitable, not noisy.</p>
+          <div class="tagrow">
+            <span class="tag">Finance</span>
+            <span class="tag">Storytelling</span>
+          </div>
+        </article>
+
+        <article class="item" data-tags="life">
+          <h4>Risk & Calm</h4>
+          <p>What skiing and climbing taught me about decision-making.</p>
+          <div class="tagrow">
+            <span class="tag">Life</span>
+            <span class="tag">Mindset</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONNECT -->
+    <section id="connect" aria-label="Connect">
+      <p class="section-title">Connect</p>
+      <h2>Let’s connect.</h2>
+      <p class="muted">If you want to talk about ideas, projects, or anything I’m working on, feel free to reach out.</p>
+
+      <div class="btn-row">
+        <!-- Replace with your actual links -->
+        <a class="btn" href="mailto:you@example.com">Email</a>
+        <a class="btn" href="#" onclick="alert('Add your LinkedIn URL here'); return false;">LinkedIn</a>
+        <a class="btn" href="#" onclick="alert('Add your X/Twitter URL here'); return false;">X (Twitter)</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <div class="small">© <span id="year"></span> Molly Liu</div>
+        <div class="small">Built with simple HTML · Minimal · Typography-first</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Archive filtering
+    const buttons = document.querySelectorAll(".filter-btn");
+    const items = Array.from(document.querySelectorAll(".item"));
+
+    function setActive(btn){
+      buttons.forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+    }
+
+    function applyFilter(tag){
+      items.forEach(el => {
+        const tags = (el.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
+        const show = tag === "all" || tags.includes(tag);
+        el.style.display = show ? "" : "none";
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tag = btn.getAttribute("data-filter");
+        setActive(btn);
+        applyFilter(tag);
+      });
+    });
+  </script>
 </body>
 </html>
