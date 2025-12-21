@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Molly Liu</title>
+    <meta name="description" content="Finance + AI + crypto. Research, investing, and building." />
+    <style>
+      :root { --bg:#0b0d10; --card:#12151b; --text:#e8eef7; --muted:#a9b4c2; --accent:#6ae4ff; }
+      *{box-sizing:border-box} body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(900px 500px at 20% 0%, #132033 0%, var(--bg) 55%); color:var(--text);}
+      a{color:var(--text); text-decoration:none} a:hover{color:var(--accent)}
+      .wrap{max-width:980px;margin:0 auto;padding:48px 20px}
+      .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+      .nav a{margin-left:14px;color:var(--muted)}
+      .hero{display:grid;gap:14px;margin:32px 0 22px}
+      h1{font-size:44px;line-height:1.05;margin:0}
+      .tag{color:var(--muted);font-size:16px;max-width:68ch}
+      .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+      .btn{padding:10px 14px;border-radius:12px;background:var(--card);border:1px solid #222a35}
+      .btn.primary{background:linear-gradient(180deg,#1a2a44,#111826);border-color:#2b3e5e}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:26px}
+      .card{grid-column:span 6;background:rgba(18,21,27,.85);border:1px solid #222a35;border-radius:16px;padding:16px}
+      .card h3{margin:0 0 6px;font-size:16px}
+      .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+      .full{grid-column:span 12}
+      .pill{display:inline-block;font-size:12px;color:var(--muted);border:1px solid #2a3240;border-radius:999px;padding:4px 10px;margin:8px 6px 0 0}
+      footer{margin-top:40px;color:var(--muted);font-size:13px}
+      @media (max-width:800px){ .card{grid-column:span 12} h1{font-size:36px} }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="nav">
+        <div style="font-weight:700">Molly Liu</div>
+        <div>
+          <a href="#work">Work</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <section class="hero">
+        <h1>Finance × AI × Crypto</h1>
+        <div class="tag">
+          I’m Molly — Emory (Goizueta) finance + AI. I research and build in crypto/tokenization and like turning messy markets into clean theses.
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="#projects">See projects</a>
+          <a class="btn" href="mailto:YOUR_EMAIL">Email</a>
+          <a class="btn" href="YOUR_LINKEDIN">LinkedIn</a>
+          <a class="btn" href="YOUR_X">X</a>
+        </div>
+        <div>
+          <span class="pill">RWA / Tokenization</span>
+          <span class="pill">Research + Investing</span>
+          <span class="pill">Python / Data</span>
+          <span class="pill">DeFi / Market structure</span>
+        </div>
+      </section>
+
+      <section id="work" class="grid">
+        <div class="card full">
+          <h3>Now</h3>
+          <p>
+            Investing analyst at Blockchain at Emory • Finance @ Emory • Previously: quant-heavy secondary market internship at Xiangcai Securities (screening + Python).
+          </p>
+        </div>
+        <div class="card">
+          <h3>Experience</h3>
+          <p>
+            Add 2–4 bullets with impact (what you built, analyzed, improved). Keep it numbers-first.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Focus</h3>
+          <p>
+            Crypto go-to-market, tokenized assets, and where distribution + product design beat “just better tech.”
+          </p>
+        </div>
+      </section>
+
+      <section id="projects" class="grid">
+        <div class="card full">
+          <h3>Projects</h3>
+          <p>Pick 3–5. Each should have: what it is, what you did, and a link (deck, repo, doc).</p>
+        </div>
+        <div class="card">
+          <h3>RWA Tokenization Landscape</h3>
+          <p>Market map + use cases + risks/mitigation. (Link to PDF or slides)</p>
+        </div>
+        <div class="card">
+          <h3>Stock Screening (A-shares)</h3>
+          <p>Fundamental + technical signals (P/E, EPS growth, MACD crossover) in Python. (Link)</p>
+        </div>
+        <div class="card">
+          <h3>BlackRock Research Prep</h3>
+          <p>Write-ups on market structure + crypto adoption. (Link)</p>
+        </div>
+        <div class="card">
+          <h3>Build / Experiments</h3>
+          <p>Any small tool: dashboard, data scraper, valuation model, etc. (Link)</p>
+        </div>
+      </section>
+
+      <section id="contact" class="grid">
+        <div class="card full">
+          <h3>Contact</h3>
+          <p>
+            Email: <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a> ·
+            LinkedIn: <a href="YOUR_LINKEDIN">Profile</a> ·
+            X: <a href="YOUR_X">@handle</a>
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="y"></span> Molly Liu · Built with plain HTML (easy mode). Upgrade later to Next.js when you want.
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
