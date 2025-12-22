@@ -11,24 +11,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
 
-  <!-- Favicon (best practice: use a square icon file for crisp results) -->
-  <!-- If you create a square icon later, replace /mollyportrait with /Assets/favicon.png -->
+  <!-- Favicon (uses your portrait). If you later create a small png/favicon.ico, replace these hrefs. -->
   <link rel="icon" href="/mollyportrait" type="image/jpeg">
   <link rel="apple-touch-icon" href="/mollyportrait">
-  <meta name="theme-color" content="#ffffff">
 
   <style>
     :root{
       --bg:#ffffff;
-      --text:#0b1220;
-      --muted:#334155;
-      --faint:#64748b;
-      --border:rgba(15,23,42,0.10);
+      --text:#111827;
+      --muted:#374151;
+      --faint:#6b7280;
+      --border:rgba(17,24,39,0.10);
 
       --card:rgba(255,255,255,0.88);
       --radius:22px;
-      --shadow-soft: 0 10px 25px rgba(15,23,42,0.08);
-      --shadow: 0 18px 45px rgba(15,23,42,0.10);
+      --shadow-soft: 0 10px 25px rgba(17,24,39,0.08);
+      --shadow: 0 18px 45px rgba(17,24,39,0.10);
 
       --max:1120px;
     }
@@ -50,13 +48,13 @@
       inset:-20%;
       z-index:-1;
       pointer-events:none;
-      filter: blur(90px);
-      opacity:.42;
+      filter: blur(85px);
+      opacity:.40;
       background:
         radial-gradient(closest-side at 18% 22%, rgba(59,130,246,0.22), transparent 62%),
         radial-gradient(closest-side at 82% 20%, rgba(168,85,247,0.18), transparent 60%),
         radial-gradient(closest-side at 70% 85%, rgba(34,197,94,0.14), transparent 62%),
-        radial-gradient(closest-side at 12% 82%, rgba(244,114,182,0.12), transparent 60%);
+        radial-gradient(closest-side at 10% 80%, rgba(244,114,182,0.12), transparent 60%);
       animation: drift 16s ease-in-out infinite alternate;
       transform: translate3d(0,0,0);
     }
@@ -78,7 +76,7 @@
       padding:10px 0;
       font-size:14px;
       color:var(--faint);
-      border-bottom:1px solid rgba(15,23,42,0.06);
+      border-bottom:1px solid rgba(17,24,39,0.06);
       background:rgba(255,255,255,0.65);
       backdrop-filter: blur(8px);
       position:sticky;
@@ -93,7 +91,7 @@
       z-index:55;
       background:rgba(255,255,255,0.70);
       backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(15,23,42,0.06);
+      border-bottom:1px solid rgba(17,24,39,0.06);
     }
     .nav-inner{
       display:flex;
@@ -108,22 +106,9 @@
       gap:10px;
       font-weight:600;
     }
-    .brand .avatar{
-      width:26px;height:26px;border-radius:999px;
-      overflow:hidden;
-      border:1px solid rgba(15,23,42,0.10);
-      box-shadow: 0 10px 18px rgba(15,23,42,0.10);
-      flex:0 0 auto;
-    }
-    .brand .avatar img{
-      width:100%;height:100%;
-      object-fit:cover;
-      object-position:center;
-      display:block;
-    }
     .dot{
       width:10px;height:10px;border-radius:999px;
-      background: linear-gradient(90deg, rgba(59,130,246,.95), rgba(168,85,247,.85));
+      background: linear-gradient(90deg, rgba(59,130,246,.9), rgba(168,85,247,.8));
       box-shadow: 0 8px 20px rgba(59,130,246,0.25);
     }
     .navlinks{
@@ -142,16 +127,16 @@
     }
     .navlinks a:hover{
       color:var(--text);
-      background:rgba(15,23,42,0.04);
-      border-color:rgba(15,23,42,0.06);
+      background:rgba(17,24,39,0.04);
+      border-color:rgba(17,24,39,0.06);
     }
 
     /* Typography */
     h1{
-      font-size: clamp(40px, 4.6vw, 64px);
-      line-height:1.08;
+      font-size: clamp(44px, 5vw, 72px);
+      line-height:1.05;
       letter-spacing:-0.02em;
-      margin:8px 0 12px;
+      margin:10px 0 12px;
       font-weight:600;
     }
     h2{
@@ -172,13 +157,11 @@
       font-size:18px;
       color:var(--muted);
     }
+    .kicker{ font-size:16px; color:var(--faint); margin:0 0 8px; }
     .small{ font-size:14px; color:var(--faint); }
-
-    /* Make section label more noticeable */
     .section-label{
-      font-size:16px;
-      font-weight:600;
-      letter-spacing:.06em;
+      font-size:13px;
+      letter-spacing:.12em;
       text-transform:uppercase;
       color:var(--faint);
       margin:0 0 10px;
@@ -200,8 +183,8 @@
       backdrop-filter: blur(10px);
     }
     .note{
-      background: rgba(248,250,252,0.86);
-      border: 1px solid rgba(15,23,42,0.10);
+      background: rgba(248,250,252,0.85);
+      border: 1px solid rgba(17,24,39,0.10);
     }
 
     /* Hero */
@@ -232,7 +215,7 @@
       background:rgba(255,255,255,0.92);
       color:var(--text);
       text-decoration:none;
-      box-shadow: 0 10px 18px rgba(15,23,42,0.06);
+      box-shadow: 0 10px 18px rgba(17,24,39,0.06);
       transition: transform .12s ease, box-shadow .12s ease;
       font-size:14px;
     }
@@ -256,96 +239,39 @@
       width:100%;
       display:block;
       border-radius:18px;
-      border:1px solid rgba(15,23,42,0.08);
-      box-shadow: 0 14px 26px rgba(15,23,42,0.10);
+      border:1px solid rgba(17,24,39,0.08);
+      box-shadow: 0 14px 26px rgba(17,24,39,0.10);
       object-fit: cover;
-      object-position: 50% 35%;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 4 / 5; /* keeps it consistent and pretty */
     }
 
-    /* MBTI two-sided bars */
-    .mbti{
-      margin-top:12px;
-      display:grid;
-      gap:12px;
-    }
-    .dichotomy{
-      display:grid;
-      gap:8px;
-    }
-    .d-head{
+    /* MBTI */
+    .mbti{ margin-top:12px; display:grid; gap:12px; }
+    .scale{ display:grid; gap:6px; }
+    .scale .row{
       display:flex;
       justify-content:space-between;
-      align-items:baseline;
       font-size:13px;
       color:var(--faint);
     }
-    .d-head .pair{
-      display:flex;
-      gap:10px;
-      align-items:baseline;
-    }
-    .d-head .pair span{
-      font-weight:600;
-      color:var(--text);
-      letter-spacing:0.02em;
-    }
-    .d-head .pct{
-      color:var(--faint);
-    }
-
-    .track{
-      position:relative;
-      height:12px;
+    .bar{
+      height:10px;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(59,130,246,0.16), rgba(168,85,247,0.16));
-      border:1px solid rgba(15,23,42,0.08);
+      background:rgba(17,24,39,0.08);
       overflow:hidden;
+      border:1px solid rgba(17,24,39,0.06);
     }
-    /* center divider */
-    .track::after{
-      content:"";
-      position:absolute;
-      left:50%;
-      top:-2px;
-      width:2px;
-      height:16px;
-      background: rgba(15,23,42,0.18);
-      border-radius:999px;
-    }
-
-    /* fill from center to the side */
-    .fill-center{
-      position:absolute;
-      top:0;
+    .fill{
       height:100%;
       border-radius:999px;
       background: linear-gradient(90deg,
-        rgba(59,130,246,0.92),
-        rgba(168,85,247,0.82),
-        rgba(34,197,94,0.78)
+        rgba(59,130,246,0.90),
+        rgba(168,85,247,0.80),
+        rgba(34,197,94,0.75)
       );
     }
 
-    /* marker dot */
-    .marker{
-      position:absolute;
-      top:50%;
-      transform:translate(-50%,-50%);
-      width:14px;height:14px;border-radius:999px;
-      background:#ffffff;
-      border:2px solid rgba(15,23,42,0.20);
-      box-shadow: 0 10px 18px rgba(15,23,42,0.10);
-    }
-    .marker::after{
-      content:"";
-      position:absolute;
-      inset:3px;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(59,130,246,0.95), rgba(168,85,247,0.85));
-    }
-
-    /* Organized photo gallery */
+    /* Organized photo grid (better than random strip) */
     .gallery{
       margin-top:18px;
       display:grid;
@@ -355,8 +281,8 @@
     .tile{
       border-radius:18px;
       overflow:hidden;
-      border:1px solid rgba(15,23,42,0.08);
-      box-shadow: 0 14px 26px rgba(15,23,42,0.08);
+      border:1px solid rgba(17,24,39,0.08);
+      box-shadow: 0 14px 26px rgba(17,24,39,0.08);
       background:#fff;
       position: relative;
     }
@@ -366,17 +292,11 @@
       object-fit: cover;
       display:block;
     }
-    /* Editorial layout */
+    /* A clean, editorial layout */
     .tile.one{ grid-column: span 7; height: 260px; }
     .tile.two{ grid-column: span 5; height: 260px; }
     .tile.three{ grid-column: span 5; height: 210px; }
     .tile.four{ grid-column: span 7; height: 210px; }
-
-    /* Crop tuning per photo (you can tweak these numbers) */
-    .tile.one img{ object-position: 50% 35%; }   /* bschool */
-    .tile.two img{ object-position: 50% 35%; }   /* theatre */
-    .tile.three img{ object-position: 50% 60%; } /* hiking (vertical) */
-    .tile.four img{ object-position: 50% 45%; }  /* skydive */
 
     @media (max-width: 900px){
       .tile.one,.tile.two,.tile.three,.tile.four{
@@ -385,21 +305,48 @@
       }
     }
 
+    /* Optional tiny label */
     .tile .label{
       position:absolute;
       left:12px;
       bottom:10px;
       font-size:12px;
       color: rgba(255,255,255,0.92);
-      background: rgba(15,23,42,0.42);
+      background: rgba(17,24,39,0.40);
       border: 1px solid rgba(255,255,255,0.14);
       padding: 6px 10px;
       border-radius: 999px;
       backdrop-filter: blur(8px);
     }
 
+    /* Grid blocks (rest of site can stay same if you already have them) */
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:16px;
+    }
+    @media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    @media (max-width:900px){ .grid-3{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+    @media (max-width:640px){ .grid-3{ grid-template-columns:1fr; } }
+
+    .p-card{
+      border:1px solid rgba(17,24,39,0.10);
+      border-radius:var(--radius);
+      padding:14px 14px 12px;
+      background: rgba(248,250,252,0.78);
+      box-shadow: 0 10px 18px rgba(17,24,39,0.05);
+    }
+    .p-card strong{ display:block; margin-bottom:6px; font-size:14px; }
+    .p-card span{ display:block; font-size:13px; color:var(--muted); }
+
     .quote{
-      border-left:2px solid rgba(15,23,42,0.12);
+      border-left:2px solid rgba(17,24,39,0.10);
       padding-left:14px;
       margin-top:12px;
     }
@@ -407,7 +354,7 @@
 
     footer{
       padding:40px 0 46px;
-      border-top:1px solid rgba(15,23,42,0.06);
+      border-top:1px solid rgba(17,24,39,0.06);
       color:var(--faint);
       font-size:13px;
     }
@@ -431,11 +378,7 @@
   <div class="nav">
     <div class="container">
       <div class="nav-inner">
-        <div class="brand">
-          <span class="dot"></span>
-          <span class="avatar" aria-hidden="true"><img src="/mollyportrait" alt=""></span>
-          Molly Liu
-        </div>
+        <div class="brand"><span class="dot"></span> Molly Liu</div>
         <nav class="navlinks" aria-label="Primary">
           <a href="#north-star">North Star</a>
           <a href="#who">Who Am I</a>
@@ -454,13 +397,14 @@
     <section id="home" aria-label="Home">
       <div class="hero">
         <div class="prose">
-          <h1>What’s up! This is Molly.</h1>
+          <div class="kicker">What’s up! I’m Molly.</div>
+          <h1>Molly Liu</h1>
 
           <p>
             I’m a Finance + AI student at Emory University. I’m curious about how ideas turn into real impact — how stories, systems, and people shape the world around us.
           </p>
 
-          <!-- NOTE CARD above MBTI -->
+          <!-- NOTE CARD moved ABOVE MBTI -->
           <div class="card note" style="margin-top:14px;">
             <h3 style="margin-bottom:8px;">Why this site exists</h3>
             <p style="margin-bottom:0;">
@@ -469,59 +413,26 @@
             </p>
           </div>
 
-          <!-- MBTI two-sided -->
+          <!-- MBTI with your requested sentence -->
           <div class="card" style="margin-top:14px;">
             <h3 style="margin-bottom:6px;">If you like personality tests like I do, here’s my MBTI:</h3>
 
             <div class="mbti">
-              <!-- E vs I (E 70%) -->
-              <div class="dichotomy">
-                <div class="d-head">
-                  <div class="pair"><span>E</span><span style="color:var(--faint);font-weight:500;">vs</span><span>I</span></div>
-                  <div class="pct">70% E</div>
-                </div>
-                <div class="track" aria-label="E vs I">
-                  <!-- fill from center to left for E -->
-                  <div class="fill-center" style="left: calc(50% - (70% * 0.5)); width: calc(70% * 0.5);"></div>
-                  <!-- marker position: 50% - (70%-50) = 30% -->
-                  <div class="marker" style="left:30%;"></div>
-                </div>
+              <div class="scale">
+                <div class="row"><span>E</span><span>70%</span></div>
+                <div class="bar"><div class="fill" style="width:70%"></div></div>
               </div>
-
-              <!-- N vs S (N 85%) -->
-              <div class="dichotomy">
-                <div class="d-head">
-                  <div class="pair"><span>N</span><span style="color:var(--faint);font-weight:500;">vs</span><span>S</span></div>
-                  <div class="pct">85% N</div>
-                </div>
-                <div class="track" aria-label="N vs S">
-                  <div class="fill-center" style="left: calc(50% - (85% * 0.5)); width: calc(85% * 0.5);"></div>
-                  <div class="marker" style="left:15%;"></div>
-                </div>
+              <div class="scale">
+                <div class="row"><span>N</span><span>85%</span></div>
+                <div class="bar"><div class="fill" style="width:85%"></div></div>
               </div>
-
-              <!-- T vs F (T 69%) -->
-              <div class="dichotomy">
-                <div class="d-head">
-                  <div class="pair"><span>T</span><span style="color:var(--faint);font-weight:500;">vs</span><span>F</span></div>
-                  <div class="pct">69% T</div>
-                </div>
-                <div class="track" aria-label="T vs F">
-                  <div class="fill-center" style="left: calc(50% - (69% * 0.5)); width: calc(69% * 0.5);"></div>
-                  <div class="marker" style="left:31%;"></div>
-                </div>
+              <div class="scale">
+                <div class="row"><span>T</span><span>69%</span></div>
+                <div class="bar"><div class="fill" style="width:69%"></div></div>
               </div>
-
-              <!-- J vs P (J 60%) -->
-              <div class="dichotomy">
-                <div class="d-head">
-                  <div class="pair"><span>J</span><span style="color:var(--faint);font-weight:500;">vs</span><span>P</span></div>
-                  <div class="pct">60% J</div>
-                </div>
-                <div class="track" aria-label="J vs P">
-                  <div class="fill-center" style="left: calc(50% - (60% * 0.5)); width: calc(60% * 0.5);"></div>
-                  <div class="marker" style="left:40%;"></div>
-                </div>
+              <div class="scale">
+                <div class="row"><span>J</span><span>60%</span></div>
+                <div class="bar"><div class="fill" style="width:60%"></div></div>
               </div>
             </div>
 
@@ -533,6 +444,7 @@
           <div class="btnrow">
             <a class="btn" href="https://www.linkedin.com/in/mollyliu10/" target="_blank" rel="noreferrer">LinkedIn</a>
             <a class="btn" href="https://x.com/MollySpiceL" target="_blank" rel="noreferrer">X</a>
+            <!-- swapped to stable profile link -->
             <a class="btn" href="https://www.instagram.com/molly_jyliu/" target="_blank" rel="noreferrer">Instagram</a>
             <a class="btn" href="mailto:mollyliu106@gmail.com">Email</a>
           </div>
@@ -566,6 +478,7 @@
         <aside class="card">
           <h3>Quick facts</h3>
 
+          <!-- Clean portrait with consistent crop -->
           <img class="img-round" src="/mollyportrait" alt="Molly portrait" style="margin-bottom:14px;">
 
           <div class="facts">
@@ -583,7 +496,7 @@
 
     <!-- NORTH STAR -->
     <section id="north-star" aria-label="North Star">
-      <div class="section-label">My North Star</div>
+      <div class="section-label">North Star</div>
       <h2>A world where ideas are able to reach their telos.</h2>
 
       <div class="prose">
@@ -601,38 +514,221 @@
       </div>
     </section>
 
-    <!-- Placeholder for your other sections -->
+ 
+
+    <!-- WHO AM I -->
     <section id="who" aria-label="Who Am I">
-      <div class="section-label">Who Am I</div>
-      <h2>(Coming soon)</h2>
-      <p class="small">Paste your full Who Am I section here when you’re ready and I’ll style it to match.</p>
+      <div class="section-head">
+        <div>
+          <div class="section-label">Bio</div>
+          <h2>Who Am I</h2>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>I’m a storyteller.</h3>
+          <p style="margin-bottom:0;">
+            I’ve always been drawn to stories — how people explain the world, how ideas spread, and how meaning takes shape.
+            I started college as a theatre major because I love taking something messy or hard to explain and turning it into a narrative that helps people see it differently.
+            When I write or speak, I’m usually trying to answer one simple question: <em>what’s really going on here?</em>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>I’m a systems thinker.</h3>
+          <p style="margin-bottom:0;">
+            I like connecting dots and looking at how things work together — not just outcomes, but <em>why</em> they happen.
+            I’m fascinated by how structures shape outcomes: markets, institutions, incentives, and human behavior.
+            Finance and technology interest me because they make these structures visible, helping me see how ideas survive, fail, or scale in the real world.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>I’m a problem solver.</h3>
+          <p style="margin-bottom:0;">
+            I enjoy problems that don’t come with clear instructions. I like starting from uncertainty, asking better questions,
+            and narrowing things down until something clicks. I’m not attached to one method — I care more about understanding the problem well enough to choose the right tools, and being willing to change my mind when the facts change.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>I’m a risk navigator.</h3>
+          <p style="margin-bottom:0;">
+            I love extreme sports — skiing, rock climbing, anything that forces full attention. To me, risk isn’t recklessness.
+            It’s understanding what could go wrong, preparing for it, and deciding whether the reward is worth it.
+            That mindset carries into how I approach challenges more broadly: I don’t avoid risk — I try to understand it, manage it, and move forward with intention.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>I’m a world explorer, searching for my <em>sukha</em>.</h3>
+          <p style="margin-bottom:0;">
+            Travel helps me feel grounded and open at the same time. I love seeing how people live, how they think, and how culture shapes what feels possible or impossible.
+            Through moving between places and meeting different people, I’m slowly learning what <em>sukha</em> means to me — a sense of ease, alignment, and inner clarity that comes from living honestly with the world, not escaping it.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>I’m a service learner.</h3>
+          <p style="margin-bottom:10px;">
+            I care deeply about education, especially for girls. Growing up in a traditional Eastern household where boys were often valued over girls shaped my belief that talent is everywhere, but access is not.
+            That belief led me to found <em>Spotlaw</em>, a theatre-based legal education project that uses storytelling and performance to help students understand the law, question dominant narratives, and recognize their rights.
+          </p>
+          <div class="small">Spotlaw: <a href="https://spotlaw.org" target="_blank" rel="noreferrer">spotlaw.org</a></div>
+        </div>
+
+        <div class="card">
+          <h3>I’m still becoming.</h3>
+          <p style="margin-bottom:0;">
+            I don’t think of myself as finished or fixed. I’m more interested in direction than labels.
+            What stays constant is my curiosity — about the world, about people, and about how ideas turn into reality.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section id="philosophy" aria-label="Philosophy">
-      <div class="section-label">Philosophy</div>
-      <h2>(Coming soon)</h2>
-      <p class="small">We can turn this into a clean card grid next.</p>
+    <!-- PHILOSOPHY -->
+    <section id="philosophy" aria-label="Life Philosophy">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Life Philosophy</div>
+          <h2>A few beliefs I try to live by</h2>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="p-card">
+          <strong>Make the world clearer.</strong>
+          <span>If I understand it deeply, I can explain it simply.</span>
+        </div>
+        <div class="p-card">
+          <strong>Chase truth, not vibes.</strong>
+          <span>I’d rather learn fast than be confidently wrong.</span>
+        </div>
+        <div class="p-card">
+          <strong>Risk is something to study.</strong>
+          <span>Fear isn’t a stop sign — it’s information.</span>
+        </div>
+        <div class="p-card">
+          <strong>Stay ambitious, stay human.</strong>
+          <span>Grow upward without losing empathy downward.</span>
+        </div>
+        <div class="p-card">
+          <strong>Let good ideas earn scale.</strong>
+          <span>Execution is where purpose becomes real.</span>
+        </div>
+        <div class="p-card">
+          <strong>Keep expanding perspective.</strong>
+          <span>Places and people change how I see.</span>
+        </div>
+      </div>
     </section>
 
-    <section id="reads" aria-label="Reads">
-      <div class="section-label">Reads</div>
-      <h2>(Coming soon)</h2>
+    <!-- READS -->
+    <section id="reads" aria-label="Reads & Listens">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Reads & Listens</div>
+          <h2>Influences</h2>
+        </div>
+      </div>
+
+      <div class="lists">
+        <div class="card">
+          <h3>Books</h3>
+          <ul>
+            <li><em>Principles</em> — Ray Dalio</li>
+            <li><em>The Courage to Be Disliked</em></li>
+            <li><em>When Breath Becomes Air</em></li>
+            <li><em>The Art of War</em></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Podcasts</h3>
+          <ul>
+            <li><em>How I Built This</em></li>
+            <li><em>Invest Like the Best</em></li>
+            <li><em>Planet Money</em></li>
+            <li><em>绝对是个妞：国际月经简报</em></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section id="work" aria-label="Work">
-      <div class="section-label">Work</div>
-      <h2>(Coming soon)</h2>
+    <!-- WORK -->
+    <section id="work" aria-label="Work & Writing">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Work</div>
+          <h2>Archive</h2>
+        </div>
+      </div>
+
+      <p class="small">A place to keep what I’m working on and what I’m learning. (Replace these demo items with your real posts.)</p>
+
+      <div class="filters" role="toolbar" aria-label="Filters">
+        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="finance" aria-pressed="false">Finance</button>
+        <button class="filter-btn" data-filter="tech" aria-pressed="false">Technology</button>
+        <button class="filter-btn" data-filter="life" aria-pressed="false">Life</button>
+      </div>
+
+      <div class="archive-grid" id="archiveGrid">
+        <article class="item" data-tags="finance">
+          <h4>Investment Memo Template</h4>
+          <p>A simple structure for turning research into conviction.</p>
+          <div class="tagrow"><span class="tag">Finance</span><span class="tag">Template</span></div>
+        </article>
+
+        <article class="item" data-tags="tech">
+          <h4>Notes on Problem-Solving Tools</h4>
+          <p>How technology changes the speed and shape of solutions.</p>
+          <div class="tagrow"><span class="tag">Technology</span><span class="tag">Systems</span></div>
+        </article>
+
+        <article class="item" data-tags="life">
+          <h4>Travel Field Notes</h4>
+          <p>Small observations from new places and new people.</p>
+          <div class="tagrow"><span class="tag">Life</span><span class="tag">Travel</span></div>
+        </article>
+
+        <article class="item" data-tags="tech finance">
+          <h4>Finance as a Lens</h4>
+          <p>Why numbers can be another way of telling the truth.</p>
+          <div class="tagrow"><span class="tag">Finance</span><span class="tag">Technology</span></div>
+        </article>
+
+        <article class="item" data-tags="life">
+          <h4>Risk & Calm</h4>
+          <p>What skiing and climbing taught me about decisions.</p>
+          <div class="tagrow"><span class="tag">Life</span><span class="tag">Mindset</span></div>
+        </article>
+
+        <article class="item" data-tags="finance">
+          <h4>Pitch Notes</h4>
+          <p>How I think about telling a clear, believable story.</p>
+          <div class="tagrow"><span class="tag">Finance</span><span class="tag">Storytelling</span></div>
+        </article>
+      </div>
     </section>
 
-    <section id="connect" aria-label="Connect">
+    <!-- CONNECT -->
+       <section id="connect" aria-label="Connect">
       <div class="section-label">Connect</div>
       <h2>Let’s connect</h2>
+      <div class="prose">
+        <p>If you want to talk about ideas, projects, or anything I’m working on, feel free to reach out.</p>
+      </div>
+
       <div class="btnrow">
         <a class="btn" href="mailto:mollyliu106@gmail.com">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/mollyliu10/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a class="btn" href="https://x.com/MollySpiceL" target="_blank" rel="noreferrer">X</a>
+        <a class="btn" href="https://www.instagram.com/molly_jyliu/" target="_blank" rel="noreferrer">Instagram</a>
       </div>
     </section>
+
 
     <footer>
       <div class="footer-row">
@@ -640,11 +736,34 @@
         <div>Built on GitHub + Vercel</div>
       </div>
     </footer>
-
   </main>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Filter work cards
+    const buttons = document.querySelectorAll(".filter-btn");
+    const items = Array.from(document.querySelectorAll(".item"));
+
+    function setActive(btn){
+      buttons.forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+    }
+
+    function applyFilter(tag){
+      items.forEach(el => {
+        const tags = (el.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
+        const show = tag === "all" || tags.includes(tag);
+        el.style.display = show ? "" : "none";
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tag = btn.getAttribute("data-filter");
+        setActive(btn);
+        applyFilter(tag);
+      });
+    });
   </script>
 </body>
 </html>
