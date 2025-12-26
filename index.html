@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
+  <!-- Tip: best is a square favicon PNG. A tall portrait can look cropped in tabs. -->
   <link rel="icon" href="/mollyportrait" type="image/jpeg">
   <link rel="apple-touch-icon" href="/mollyportrait">
   <meta name="theme-color" content="#ffffff">
@@ -38,7 +39,7 @@
       --focus: rgba(59,130,246,0.45);
     }
 
-    html { scroll-behavior: smooth; height:auto; }
+    html { scroll-behavior: smooth; }
     *{ box-sizing:border-box; }
 
     body{
@@ -49,15 +50,16 @@
       line-height:1.7;
       -webkit-font-smoothing:antialiased;
       overflow-x:hidden;
-      height:auto;
     }
 
+    /* Accessibility focus */
     a:focus, button:focus{
       outline: 2px solid var(--focus);
       outline-offset: 2px;
       border-radius: 10px;
     }
 
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       *, *::before, *::after{
         animation-duration: 0.01ms !important;
@@ -67,6 +69,7 @@
       }
     }
 
+    /* Background glow */
     .glow{
       position:fixed;
       inset:-18%;
@@ -97,6 +100,7 @@
       padding:0 22px;
     }
 
+    /* Top banner */
     .top-note{
       display:flex;
       justify-content:center;
@@ -111,6 +115,7 @@
       z-index:80;
     }
 
+    /* Nav */
     .nav{
       position:sticky;
       top:42px;
@@ -140,6 +145,7 @@
       flex: 0 0 auto;
     }
 
+    /* Hamburger */
     .hamburger{
       display:none;
       border:1px solid var(--border);
@@ -149,7 +155,9 @@
       cursor:pointer;
       box-shadow: 0 10px 18px rgba(17,24,39,0.06);
     }
-    .hamburger .lines{ width:18px; height:12px; position:relative; display:block; }
+    .hamburger .lines{
+      width:18px; height:12px; position:relative; display:block;
+    }
     .hamburger .lines span{
       position:absolute; left:0; right:0;
       height:2px; border-radius:999px;
@@ -167,6 +175,8 @@
       justify-content:flex-end;
       align-items:center;
     }
+
+    /* Underline animation */
     .navlinks a{
       color:var(--faint);
       text-decoration:none;
@@ -203,6 +213,7 @@
     }
     .navlinks a.active::after{ transform: scaleX(1); }
 
+    /* Mobile nav dropdown */
     @media (max-width: 820px){
       .hamburger{ display:inline-flex; align-items:center; gap:10px; }
       .navlinks{
@@ -224,6 +235,7 @@
       .nav-inner{ position:relative; }
     }
 
+    /* Typography */
     h1{
       font-size: clamp(28px, 3.6vw, 55px);
       line-height: 1.05;
@@ -238,9 +250,23 @@
       margin:0 0 12px;
       font-weight:600;
     }
-    h3{ margin:0 0 10px; font-size:16px; font-weight:600; letter-spacing:-0.01em; }
-    h4{ margin:0 0 8px; font-size:16px; font-weight:600; letter-spacing:-0.01em; }
-    p{ margin:0 0 16px; font-size:18px; color:var(--muted); }
+    h3{
+      margin:0 0 10px;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:-0.01em;
+    }
+    h4{
+      margin:0 0 8px;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:-0.01em;
+    }
+    p{
+      margin:0 0 16px;
+      font-size:18px;
+      color:var(--muted);
+    }
     .small{ font-size:14px; color:var(--faint); }
 
     .section-label{
@@ -251,9 +277,11 @@
       color:var(--faint);
       margin:0 0 10px;
     }
+
     .prose{ max-width:62ch; }
     section{ padding:56px 0; }
 
+    /* Cards */
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -264,22 +292,31 @@
       transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
       will-change: transform;
     }
-    .card:hover{ transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
 
     .note{
       background: rgba(248,250,252,0.86);
       border: 1px solid rgba(17,24,39,0.10);
     }
-    .note:hover{ background: rgba(241,245,249,0.92); }
+    .note:hover{
+      background: rgba(241,245,249,0.92);
+    }
 
+    /* Hero */
     .hero{
       display:grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap:26px;
       align-items:start;
     }
-    @media (max-width: 900px){ .hero{ grid-template-columns:1fr; } }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns:1fr; }
+    }
 
+    /* Buttons */
     .btnrow{
       display:flex;
       gap:10px;
@@ -300,11 +337,22 @@
       transition: transform .12s ease, box-shadow .12s ease;
       font-size:14px;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
 
-    .facts{ display:grid; gap:8px; margin-top:6px; font-size:15px; color:var(--muted); }
+    /* Quick facts */
+    .facts{
+      display:grid;
+      gap:8px;
+      margin-top:6px;
+      font-size:15px;
+      color:var(--muted);
+    }
     .facts b{ color:var(--text); font-weight:600; }
 
+    /* Portrait */
     .img-round{
       width:100%;
       display:block;
@@ -316,7 +364,8 @@
       background: rgba(17,24,39,0.06);
     }
 
-    .img-skeleton{ position:relative; overflow:hidden; }
+    /* Skeleton shimmer */
+    .img-skeleton{ position:relative; overflow:hidden; border-radius:18px; }
     .img-skeleton::before{
       content:"";
       position:absolute;
@@ -325,59 +374,91 @@
       transform: translateX(-100%);
       animation: shimmer 1.3s ease-in-out infinite;
     }
-    @keyframes shimmer{ 0%{ transform: translateX(-100%); } 100%{ transform: translateX(100%); } }
+    @keyframes shimmer{
+      0%{ transform: translateX(-100%); }
+      100%{ transform: translateX(100%); }
+    }
     .img-loaded.img-skeleton::before{ display:none; }
 
-    /* ===== MBTI (match your image style) ===== */
-    .mbti{ margin-top:12px; display:grid; gap:16px; }
-
-    .mbti-scale{
-      display:grid;
+    /* ===== MBTI (fixed direction, clearer colors, smaller letters) ===== */
+    .mbti-card{ margin-top:14px; }
+    .mbti-badge{
+      display:inline-flex;
+      align-items:center;
       gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(17,24,39,0.10);
+      background: linear-gradient(90deg, rgba(59,130,246,.10), rgba(168,85,247,.10));
+      font-size:13px;
+      color: rgba(17,24,39,0.78);
+      margin: 6px 0 12px;
     }
+    .mbti-badge b{ color: var(--text); font-weight:700; letter-spacing:0.04em; }
+
+    .mbti{
+      display:grid;
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .mbti-scale{ display:grid; gap:8px; }
+
     .mbti-head{
       display:grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items:end;
-      gap:12px;
+      grid-template-columns: 80px 1fr 80px;
+      align-items:center;
+      gap:10px;
     }
-    .mbti-center-label{
-      text-align:center;
-      font-size:13px;
-      color:var(--faint);
-      font-weight:600;
-      letter-spacing:0.01em;
-      transform: translateY(2px);
-      white-space:nowrap;
-    }
+
     .mbti-side{
       display:flex;
-      gap:10px;
       align-items:baseline;
+      gap:10px;
+      color: rgba(17,24,39,0.75);
     }
+
     .mbti-side.right{ justify-content:flex-end; }
+
     .mbti-letter{
-      font-size:28px;
-      font-weight:700;
+      font-size:18px;
+      font-weight:500; /* not bold */
       line-height:1;
-      letter-spacing:-0.01em;
       color:var(--text);
     }
+
     .mbti-num{
       font-size:13px;
-      color:var(--faint);
-      font-weight:700;
+      color:rgba(17,24,39,0.65);
+      font-weight:600;
+      min-width: 18px;
+    }
+
+    .mbti-label{
+      text-align:center;
+      font-size:14px;
+      color: rgba(17,24,39,0.60);
+      letter-spacing:0;
     }
 
     .mbti-track{
       position:relative;
       height:12px;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(17,24,39,0.04), rgba(17,24,39,0.02));
-      border:1px solid rgba(17,24,39,0.10);
+      background: rgba(17,24,39,0.04);
+      border:1px solid rgba(17,24,39,0.14);
       overflow:hidden;
     }
-    /* center dotted line */
+
+    .mbti-fill{
+      position:absolute;
+      top:0; bottom:0;
+      width:0%;
+      opacity:0.95;
+    }
+    .mbti-fill.left{ left:0; background: rgba(59,130,246,0.55); }
+    .mbti-fill.right{ right:0; background: rgba(168,85,247,0.50); }
+
     .mbti-track::after{
       content:"";
       position:absolute;
@@ -388,8 +469,8 @@
       border-radius:999px;
       background: repeating-linear-gradient(
         to bottom,
-        rgba(17,24,39,0.22),
-        rgba(17,24,39,0.22) 3px,
+        rgba(17,24,39,0.28),
+        rgba(17,24,39,0.28) 3px,
         transparent 3px,
         transparent 6px
       );
@@ -400,11 +481,11 @@
       position:absolute;
       top:50%;
       transform: translate(-50%,-50%);
-      width:14px; height:14px;
+      width:16px; height:16px;
       border-radius:999px;
       background:#fff;
-      border:2px solid rgba(17,24,39,0.18);
-      box-shadow: 0 10px 18px rgba(17,24,39,0.10);
+      border:2px solid rgba(17,24,39,0.22);
+      box-shadow: 0 10px 18px rgba(17,24,39,0.18);
       opacity:0;
       left:50%;
     }
@@ -416,17 +497,18 @@
       background: linear-gradient(90deg, rgba(59,130,246,0.95), rgba(168,85,247,0.85));
     }
 
+    /* Tooltip (for letters) */
     .tooltip{
       position:relative;
       display:inline-flex;
+      align-items:baseline;
       cursor:help;
     }
     .tooltip[data-tip]::after{
       content: attr(data-tip);
       position:absolute;
-      left:0;
-      top: 100%;
-      margin-top:8px;
+      left:-6px;
+      top: 120%;
       background: rgba(17,24,39,0.88);
       color: rgba(255,255,255,0.92);
       padding: 8px 10px;
@@ -434,7 +516,7 @@
       font-size:12px;
       line-height:1.4;
       width: max-content;
-      max-width: 260px;
+      max-width: 240px;
       opacity:0;
       transform: translateY(-4px);
       pointer-events:none;
@@ -442,8 +524,30 @@
       box-shadow: 0 18px 40px rgba(17,24,39,0.20);
       z-index:20;
     }
-    .tooltip:hover::after{ opacity:1; transform: translateY(0); }
+    .tooltip:hover::after{
+      opacity:1;
+      transform: translateY(0);
+    }
 
+    /* MBTI details drawer */
+    .mbti-details{
+      margin-top: 10px;
+      border-top: 1px solid rgba(17,24,39,0.08);
+      padding-top: 10px;
+      display:none;
+      gap:10px;
+    }
+    .mbti-details.open{ display:grid; }
+    .mbti-details .mini{
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(248,250,252,0.85);
+      border:1px solid rgba(17,24,39,0.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+
+    /* Gallery */
     .gallery{
       margin-top:18px;
       display:grid;
@@ -460,7 +564,10 @@
       cursor: zoom-in;
       transition: transform .18s ease, box-shadow .18s ease;
     }
-    .tile:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .tile:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
     .tile img{
       width:100%;
       height:100%;
@@ -494,9 +601,9 @@
     }
     .tile:hover .label{ opacity:1; transform: translateY(0); }
 
+    /* Layout helpers */
     .grid-2{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px; }
     @media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
-
     .grid-3{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
     @media (max-width:900px){ .grid-3{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
     @media (max-width:640px){ .grid-3{ grid-template-columns:1fr; } }
@@ -520,6 +627,7 @@
     }
     .quote p{ margin:0 0 10px; }
 
+    /* Work section */
     .filters{
       display:flex;
       gap:10px;
@@ -576,6 +684,7 @@
       background: rgba(248,250,252,0.85);
     }
 
+    /* Reveal */
     .reveal{
       opacity:0;
       transform: translateY(10px);
@@ -583,6 +692,7 @@
     }
     .reveal.fade-in{ opacity:1; transform: translateY(0); }
 
+    /* Footer */
     footer{
       padding:40px 0 46px;
       border-top:1px solid rgba(17,24,39,0.06);
@@ -597,14 +707,7 @@
       align-items:center;
     }
 
-    /* Fix "blank forever scroll" feeling: give the page a real ending */
-    main{ padding-bottom: 24px; }
-    body::after{
-      content:"";
-      display:block;
-      height: 1px;
-    }
-
+    /* Floating Top button */
     .to-top{
       position: fixed;
       right: 18px;
@@ -623,8 +726,13 @@
       font-family: inherit;
       color: var(--text);
     }
-    .to-top.show{ opacity:1; pointer-events:auto; transform: translateY(0); }
+    .to-top.show{
+      opacity:1;
+      pointer-events:auto;
+      transform: translateY(0);
+    }
 
+    /* Lightbox */
     .lightbox{
       position: fixed;
       inset: 0;
@@ -646,7 +754,12 @@
       box-shadow: 0 30px 90px rgba(0,0,0,0.35);
       position: relative;
     }
-    .lightbox-card img{ width:100%; height:auto; display:block; background: rgba(255,255,255,0.05); }
+    .lightbox-card img{
+      width:100%;
+      height:auto;
+      display:block;
+      background: rgba(255,255,255,0.05);
+    }
     .lightbox-close{
       position:absolute;
       top:10px;
@@ -670,23 +783,6 @@
       border-radius: 999px;
       backdrop-filter: blur(10px);
       font-size: 13px;
-    }
-
-    .mbti-details{
-      margin-top: 10px;
-      border-top: 1px solid rgba(17,24,39,0.08);
-      padding-top: 10px;
-      display:none;
-      gap:10px;
-    }
-    .mbti-details.open{ display:grid; }
-    .mbti-details .mini{
-      font-size: 13px;
-      color: var(--muted);
-      background: rgba(248,250,252,0.85);
-      border:1px solid rgba(17,24,39,0.10);
-      border-radius: 14px;
-      padding: 10px 12px;
     }
   </style>
 </head>
@@ -726,91 +822,100 @@
     <section id="home" aria-label="Home" class="reveal">
       <div class="hero">
         <div class="prose">
-          <h1>What’s up! I'm Molly.</h1>
+          <h1>What’s up! This is Molly.</h1>
 
           <p>
-            I’m a Finance + AI student at Emory University. I’m curious about how ideas turn into real impact -- how stories, systems, and people shape the world around us.
+            I’m a Finance + AI student at Emory University. I’m curious about how ideas turn into real impact — how stories, systems, and people shape the world around us.
           </p>
 
+          <!-- NOTE CARD -->
           <div class="card note reveal" style="margin-top:14px;">
             <h3 style="margin-bottom:8px;">Why this site exists</h3>
             <p style="margin-bottom:0;">
-              I’ve spent a long time trying to explain <em>who I am</em> in applications and quick pitches. Each time, I was writing for a different audience and leaving parts of myself out.
-              So I decided to build this everything site, where I can put down my goals, background, projects, writing, and what I want to share with the world.
+              I’ve spent a long time trying to explain who I am in applications and quick pitches.
+              This is my place to put everything in one spot — goals, projects, writing, and what I’m learning.
             </p>
           </div>
 
-          <!-- MBTI (ends show numbers like your image) -->
-          <div class="card reveal" style="margin-top:14px;">
-            <h3 style="margin-bottom:6px;">If you like personality tests like I do, here’s my MBTI:</h3>
+          <!-- MBTI -->
+          <div class="card reveal mbti-card">
+            <h3 style="margin-bottom:0;">If you like personality tests like I do, here’s my MBTI:</h3>
+            <div class="mbti-badge">Type: <b>ENTJ</b></div>
 
             <div class="mbti" id="mbti">
-              <!-- data-leftpct = % leaning LEFT letter -->
-              <div class="mbti-scale" data-left="E" data-right="I" data-leftpct="70">
+              <!-- data-leftpct means the LEFT letter percentage -->
+              <div class="mbti-scale" data-left="E" data-right="I" data-leftpct="70" aria-label="Source of energy">
                 <div class="mbti-head">
                   <div class="mbti-side left">
-                    <span class="mbti-letter tooltip" data-tip="E: energized by people + the external world.">E</span>
+                    <span class="mbti-letter tooltip" data-tip="E: energized by people + external world.">E</span>
                     <span class="mbti-num" data-role="leftNum">70</span>
                   </div>
-                  <div class="mbti-center-label">Source of energy</div>
+                  <div class="mbti-label">Source of energy</div>
                   <div class="mbti-side right">
                     <span class="mbti-num" data-role="rightNum">30</span>
-                    <span class="mbti-letter tooltip" data-tip="I: energized by ideas + the inner world.">I</span>
+                    <span class="mbti-letter tooltip" data-tip="I: energized by ideas + inner world.">I</span>
                   </div>
                 </div>
-                <div class="mbti-track" aria-label="E/I scale">
+                <div class="mbti-track">
+                  <div class="mbti-fill left"></div>
+                  <div class="mbti-fill right"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
 
-              <!-- S on left, N on right (you’re 85% N => left is 15) -->
-              <div class="mbti-scale" data-left="S" data-right="N" data-leftpct="15">
+              <div class="mbti-scale" data-left="S" data-right="N" data-leftpct="15" aria-label="Way of gathering information">
                 <div class="mbti-head">
                   <div class="mbti-side left">
                     <span class="mbti-letter tooltip" data-tip="S: facts + concrete details.">S</span>
                     <span class="mbti-num" data-role="leftNum">15</span>
                   </div>
-                  <div class="mbti-center-label">Way of gathering information</div>
+                  <div class="mbti-label">Way of gathering information</div>
                   <div class="mbti-side right">
                     <span class="mbti-num" data-role="rightNum">85</span>
                     <span class="mbti-letter tooltip" data-tip="N: patterns + future possibilities.">N</span>
                   </div>
                 </div>
-                <div class="mbti-track" aria-label="S/N scale">
+                <div class="mbti-track">
+                  <div class="mbti-fill left"></div>
+                  <div class="mbti-fill right"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
 
-              <div class="mbti-scale" data-left="T" data-right="F" data-leftpct="69">
+              <div class="mbti-scale" data-left="T" data-right="F" data-leftpct="69" aria-label="Decision making">
                 <div class="mbti-head">
                   <div class="mbti-side left">
                     <span class="mbti-letter tooltip" data-tip="T: logic + analysis.">T</span>
                     <span class="mbti-num" data-role="leftNum">69</span>
                   </div>
-                  <div class="mbti-center-label">Decision making</div>
+                  <div class="mbti-label">Decision making</div>
                   <div class="mbti-side right">
                     <span class="mbti-num" data-role="rightNum">31</span>
                     <span class="mbti-letter tooltip" data-tip="F: values + personal impact.">F</span>
                   </div>
                 </div>
-                <div class="mbti-track" aria-label="T/F scale">
+                <div class="mbti-track">
+                  <div class="mbti-fill left"></div>
+                  <div class="mbti-fill right"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
 
-              <div class="mbti-scale" data-left="J" data-right="P" data-leftpct="60">
+              <div class="mbti-scale" data-left="J" data-right="P" data-leftpct="60" aria-label="How you relate to the external world">
                 <div class="mbti-head">
                   <div class="mbti-side left">
                     <span class="mbti-letter tooltip" data-tip="J: plans + decisions.">J</span>
                     <span class="mbti-num" data-role="leftNum">60</span>
                   </div>
-                  <div class="mbti-center-label">How you relate to the external world</div>
+                  <div class="mbti-label">How you relate to the external world</div>
                   <div class="mbti-side right">
                     <span class="mbti-num" data-role="rightNum">40</span>
                     <span class="mbti-letter tooltip" data-tip="P: options + flexibility.">P</span>
                   </div>
                 </div>
-                <div class="mbti-track" aria-label="J/P scale">
+                <div class="mbti-track">
+                  <div class="mbti-fill left"></div>
+                  <div class="mbti-fill right"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
@@ -821,10 +926,10 @@
             </button>
 
             <div class="mbti-details" id="mbtiDetails">
-              <div class="mini"><b>E</b> = Extraversion • <b>I</b> = Introversion</div>
-              <div class="mini"><b>S</b> = Sensing • <b>N</b> = Intuition</div>
-              <div class="mini"><b>T</b> = Thinking • <b>F</b> = Feeling</div>
-              <div class="mini"><b>J</b> = Judging • <b>P</b> = Perceiving</div>
+              <div class="mini"><b>E</b> = external energy • <b>I</b> = internal energy</div>
+              <div class="mini"><b>N</b> = patterns & possibilities • <b>S</b> = details & facts</div>
+              <div class="mini"><b>T</b> = logic & analysis • <b>F</b> = values & people</div>
+              <div class="mini"><b>J</b> = structure & plans • <b>P</b> = flexibility & options</div>
             </div>
 
             <div class="small" style="margin-top:10px;">
@@ -840,34 +945,36 @@
           </div>
 
           <div class="small" style="margin-top:10px;">
-            Feel free to use the nav to jump around!
+            Tip: use the nav to jump around. Everything is editable.
           </div>
 
+          <!-- Gallery -->
           <div class="gallery reveal" aria-label="Photo gallery" id="gallery">
             <div class="tile one" data-caption="business" data-full="/bschool">
               <img loading="lazy" src="/bschool" alt="Molly portrait at business school">
-              <div class="label">Me at Goizueta Business School</div>
+              <div class="label">business</div>
             </div>
             <div class="tile two" data-caption="theatre" data-full="/theatre">
               <img loading="lazy" src="/theatre" alt="Molly on stage">
-              <div class="label">I love Theatres</div>
+              <div class="label">theatre</div>
             </div>
             <div class="tile three" data-caption="explorer" data-full="/hiking">
               <img loading="lazy" src="/hiking" alt="Molly hiking in the mountains">
-              <div class="label">I love touching grass</div>
+              <div class="label">explorer</div>
             </div>
             <div class="tile four" data-caption="risk" data-full="/skydive">
               <img loading="lazy" src="/skydive" alt="Molly skydiving">
-              <div class="label">I love extreme sports</div>
+              <div class="label">risk</div>
             </div>
           </div>
         </div>
 
+        <!-- Quick Facts -->
         <aside class="card reveal">
           <h3>Quick facts</h3>
 
-          <div class="img-skeleton" id="portraitSkeleton" style="border-radius:18px;">
-            <img loading="lazy" class="img-round" src="/mollyportrait" alt="Molly portrait" style="margin-bottom:14px;">
+          <div class="img-skeleton" id="portraitSkeleton" style="margin-bottom:14px;">
+            <img loading="lazy" class="img-round" src="/mollyportrait" alt="Molly portrait">
           </div>
 
           <div class="facts">
@@ -883,25 +990,27 @@
       </div>
     </section>
 
+    <!-- NORTH STAR -->
     <section id="north-star" aria-label="North Star" class="reveal">
       <div class="section-label">My North Star</div>
       <h2>A world where ideas are able to reach their telos.</h2>
 
       <div class="prose">
         <p class="small">
-          <b style="color:var(--text);">Telos</b> is a Greek concept meaning purposeful direction -- the end a thing is moving toward.
+          <b style="color:var(--text);">Telos</b> is a Greek concept meaning purposeful direction — the end a thing is moving toward.
           Not a fixed destiny, but a process of becoming.
         </p>
 
         <div class="quote">
           <p>• I believe ideas matter because they shape how the world works.</p>
           <p>• I believe the difference between a good idea and a world-changing one is often execution and scale.</p>
-          <p>• I believe better tools - intellectual, financial, and technological - help ideas move closer to their intended impact.</p>
+          <p>• I believe better tools — intellectual, financial, and technological — help ideas move closer to their intended impact.</p>
           <p>• I’m drawn to understanding and working within those tools.</p>
         </div>
       </div>
     </section>
 
+    <!-- WHO AM I -->
     <section id="who" aria-label="Who Am I" class="reveal">
       <div class="section-label">Bio</div>
       <h2>Who Am I</h2>
@@ -910,17 +1019,17 @@
         <div class="card">
           <h3>I’m a storyteller.</h3>
           <p style="margin-bottom:0;">
-            I’ve always been drawn to stories: how people explain the world, how ideas spread, and how meaning takes shape.
-            I started college as a theatre major because I love taking something messy or hard to explain and turning it into a narrative that helps people see it differently。
+            I’ve always been drawn to stories — how people explain the world, how ideas spread, and how meaning takes shape.
+            I started college as a theatre major because I love taking something messy or hard to explain and turning it into a narrative that helps people see it differently.
           </p>
         </div>
 
         <div class="card">
           <h3>I’m a systems thinker.</h3>
           <p style="margin-bottom:0;">
-            I like connecting dots and looking at how things work together, not just outcomes, but <em>why</em> they happen.
+            I like connecting dots and looking at how things work together — not just outcomes, but <em>why</em> they happen.
             I’m fascinated by how structures shape outcomes: markets, institutions, incentives, and human behavior.
-            Finance interest me because they make these structures visible, helping me see how ideas survive, fail, or scale in the real world.
+            Finance and technology interest me because they make these structures visible, helping me see how ideas survive, fail, or scale in the real world.
           </p>
         </div>
 
@@ -935,9 +1044,8 @@
         <div class="card">
           <h3>I’m a risk navigator.</h3>
           <p style="margin-bottom:0;">
-            I love extreme sports! Skiing, surfing, stateboarding, rock climbing...you name it! I love when I'm trying to pay full attention to risks.
-            To me, risks is understanding what could go wrong, preparing for it, and deciding whether the reward is worth it.
-            That mindset carries into how I approach challenges more broadly: I don’t avoid risk -- I try to understand it, manage it, and move forward with intention.
+            I love extreme sports — skiing, rock climbing, anything that forces full attention. To me, risk isn’t recklessness.
+            It’s understanding what could go wrong, preparing for it, and deciding whether the reward is worth it.
           </p>
         </div>
 
@@ -945,7 +1053,7 @@
           <h3>I’m a world explorer, searching for my <em>sukha</em>.</h3>
           <p style="margin-bottom:0;">
             Travel helps me feel grounded and open at the same time. I love seeing how people live, how they think, and how culture shapes what feels possible or impossible.
-            Through moving between places and meeting different people, I’m slowly learning what <em>sukha</em> means to me — a sense of ease, alignment, and inner clarity that comes from living honestly with the world.
+            Through moving between places and meeting different people, I’m slowly learning what <em>sukha</em> means to me.
           </p>
         </div>
 
@@ -961,13 +1069,14 @@
         <div class="card">
           <h3>I’m still becoming.</h3>
           <p style="margin-bottom:0;">
-            I don’t think of myself as finished or fixed, I love trying new things and taking on more identities!
-            What stays constant is my curiosity about the world, about people, and about how ideas turn into reality.
+            I don’t think of myself as finished or fixed. I’m more interested in direction than labels.
+            What stays constant is my curiosity — about the world, about people, and about how ideas turn into reality.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- PHILOSOPHY -->
     <section id="philosophy" aria-label="Life Philosophy" class="reveal">
       <div class="section-label">Life Philosophy</div>
       <h2>A few beliefs I try to live by</h2>
@@ -982,6 +1091,7 @@
       </div>
     </section>
 
+    <!-- READS -->
     <section id="reads" aria-label="Reads & Listens" class="reveal">
       <div class="section-label">Reads & Listens</div>
       <h2>Influences</h2>
@@ -990,10 +1100,10 @@
         <div class="card">
           <h3>Books</h3>
           <ul>
-            <li><em>Principles</em> -- Ray Dalio</li>
-            <li><em>The Courage to Be Disliked</em> -- Fumitake Koga & Ichiro Kishimi</li>
-            <li><em>When Breath Becomes Air</em> -- Paul Kalanithi</li>
-            <li><em>The Art of War</em> -- Sun Tzu</li>
+            <li><em>Principles</em> — Ray Dalio</li>
+            <li><em>The Courage to Be Disliked</em></li>
+            <li><em>When Breath Becomes Air</em></li>
+            <li><em>The Art of War</em></li>
           </ul>
         </div>
         <div class="card">
@@ -1008,6 +1118,7 @@
       </div>
     </section>
 
+    <!-- WORK -->
     <section id="work" aria-label="Work & Writing" class="reveal">
       <div class="section-label">Work</div>
       <h2>Archive</h2>
@@ -1041,19 +1152,20 @@
         </article>
 
         <article class="item" data-tags="life">
-          <h4>Thoughts Lately? or Blog? or Vlog <span class="small">· 2025</span></h4>
+          <h4>Thoughts Lately <span class="small">· 2025</span></h4>
           <p>Update later</p>
           <div class="tagrow"><span class="tag">Life</span><span class="tag">Mindset</span></div>
         </article>
 
         <article class="item" data-tags="finance">
           <h4>Industry Research <span class="small">· 2025</span></h4>
-          <p>Update Later</p>
+          <p>Update later</p>
           <div class="tagrow"><span class="tag">Finance</span><span class="tag">Storytelling</span></div>
         </article>
       </div>
     </section>
 
+    <!-- CONNECT -->
     <section id="connect" aria-label="Connect" class="reveal">
       <div class="section-label">Connect</div>
       <h2>Let’s connect</h2>
@@ -1077,8 +1189,10 @@
     </footer>
   </main>
 
+  <!-- Floating Top -->
   <button class="to-top" id="toTop" aria-label="Back to top">↑ Top</button>
 
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Image preview">
       <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
@@ -1098,8 +1212,6 @@
       const open = navlinks.classList.toggle("open");
       hamburger.setAttribute("aria-expanded", open ? "true" : "false");
     });
-
-    // Close mobile nav after clicking a link
     navlinks?.querySelectorAll("a").forEach(a => {
       a.addEventListener("click", () => {
         if (navlinks.classList.contains("open")) {
@@ -1138,18 +1250,17 @@
     }, { passive: true });
     toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-    // Fade-in on enter
-    const observer = new IntersectionObserver((entries) => {
+    // Reveal on enter
+    const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add("fade-in");
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll(".reveal, .card, .item, .p-card").forEach(el => observer.observe(el));
+    document.querySelectorAll(".reveal, .card, .item, .p-card").forEach(el => revealObs.observe(el));
 
-    // Active nav state based on section in view
+    // Active nav state
     const navMap = new Map();
     document.querySelectorAll(".navlinks a[data-section]").forEach(a => navMap.set(a.dataset.section, a));
-
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -1159,13 +1270,12 @@
         if (activeLink) activeLink.classList.add("active");
       });
     }, { threshold: 0.35 });
-
     ["north-star","who","philosophy","reads","work","connect"].forEach(id => {
       const el = document.getElementById(id);
       if (el) sectionObserver.observe(el);
     });
 
-    // MBTI: set end numbers + animate marker position
+    // ===== MBTI (correct direction + clearer fill + animated marker) =====
     function initMBTI(){
       document.querySelectorAll(".mbti-scale").forEach(scale => {
         const leftPct = Math.max(0, Math.min(100, Number(scale.dataset.leftpct || 50)));
@@ -1175,6 +1285,11 @@
         const rightNum = scale.querySelector('[data-role="rightNum"]');
         if (leftNum) leftNum.textContent = String(leftPct);
         if (rightNum) rightNum.textContent = String(rightPct);
+
+        const fillL = scale.querySelector(".mbti-fill.left");
+        const fillR = scale.querySelector(".mbti-fill.right");
+        if (fillL) fillL.style.width = leftPct + "%";
+        if (fillR) fillR.style.width = rightPct + "%";
       });
     }
 
@@ -1184,15 +1299,20 @@
         const marker = scale.querySelector(".mbti-marker");
         if (!marker) return;
 
+        // ✅ FIX: leftPct high => marker closer to LEFT
+        // leftPct=100 => 0%, leftPct=0 => 100%
+        const markerPos = 100 - leftPct;
+
         marker.style.transition = "opacity 300ms ease 120ms, left 900ms cubic-bezier(.2,.8,.2,1)";
         requestAnimationFrame(() => {
-          marker.style.left = leftPct + "%";
+          marker.style.left = markerPos + "%";
           marker.style.opacity = "1";
         });
       });
     }
 
     initMBTI();
+
     const mbtiEl = document.getElementById("mbti");
     if (mbtiEl){
       const mbtiObs = new IntersectionObserver((entries) => {
@@ -1215,7 +1335,7 @@
       mbtiDetails.classList.toggle("open");
     });
 
-    // Lightbox modal
+    // Lightbox
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
     const lightboxCaption = document.getElementById("lightboxCaption");
@@ -1249,11 +1369,11 @@
     lightbox?.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
     window.addEventListener("keydown", (e) => { if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox(); });
 
-    // Subtle parallax for gallery images
-    const tiles = Array.from(document.querySelectorAll(".tile img"));
+    // Subtle parallax
+    const imgs = Array.from(document.querySelectorAll(".tile img"));
     function parallax(){
       const vh = window.innerHeight;
-      tiles.forEach(img => {
+      imgs.forEach(img => {
         const rect = img.getBoundingClientRect();
         const mid = rect.top + rect.height / 2;
         const amt = (mid - vh / 2) / (vh / 2);
@@ -1265,7 +1385,7 @@
     window.addEventListener("resize", () => requestAnimationFrame(parallax));
     requestAnimationFrame(parallax);
 
-    // Skeleton removal when images load
+    // Skeleton removal
     const portrait = document.querySelector(".img-round");
     const skeletonWrap = document.getElementById("portraitSkeleton");
     if (portrait && skeletonWrap){
