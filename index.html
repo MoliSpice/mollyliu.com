@@ -440,38 +440,43 @@
       color: rgba(17,24,39,0.60);
       letter-spacing:0;
     }
-    /* Track stays neutral */
+
     .mbti-track{
       position:relative;
       height:12px;
       border-radius:999px;
-      background: rgba(17,24,39,0.05);
+      background: rgba(17,24,39,0.04);
       border:1px solid rgba(17,24,39,0.14);
       overflow:hidden;
     }
-    
-    /* Neutral fills by default (no color) */
+
     .mbti-fill{
       position:absolute;
       top:0; bottom:0;
       width:0%;
-      opacity:1;
-      background: transparent;
+      opacity:0.95;
     }
-    
-    /* Only the dominant side gets color */
-    .mbti-scale.dominant-left  .mbti-fill.left,
-    .mbti-scale.dominant-right .mbti-fill.right{
-      background: linear-gradient(90deg, rgba(59,130,246,0.75), rgba(168,85,247,0.60));
+    .mbti-fill.left{ left:0; background: rgba(59,130,246,0.55); }
+    .mbti-fill.right{ right:0; background: rgba(168,85,247,0.50); }
+
+    .mbti-track::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:-3px;
+      width:2px;
+      height:18px;
+      border-radius:999px;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(17,24,39,0.28),
+        rgba(17,24,39,0.28) 3px,
+        transparent 3px,
+        transparent 6px
+      );
+      transform: translateX(-50%);
     }
-    
-    /* Give dominant side a subtle glow so it pops */
-    .mbti-scale.dominant-left  .mbti-fill.left,
-    .mbti-scale.dominant-right .mbti-fill.right{
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.35) inset;
-    }
-    
-    /* Marker stays consistent */
+
     .mbti-marker{
       position:absolute;
       top:50%;
@@ -1270,36 +1275,41 @@
       if (el) sectionObserver.observe(el);
     });
 
+    // ===== MBTI (correct direction + clearer fill + animated marker) =====
+    function initMBTI(){
+      document.querySelectorAll(".mbti-scale").forEach(scale => {
+        const leftPct = Math.max(0, Math.min(100, Number(scale.dataset.leftpct || 50)));
+        const rightPct = 100 - leftPct;
 
-  function initMBTI(){
-    document.querySelectorAll(".mbti-scale").forEach(scale => {
-      const leftPct = Math.max(0, Math.min(100, Number(scale.dataset.leftpct || 50)));
-      const rightPct = 100 - leftPct;
-  
-      // numbers
-      const leftNum = scale.querySelector('[data-role="leftNum"]');
-      const rightNum = scale.querySelector('[data-role="rightNum"]');
-      if (leftNum) leftNum.textContent = String(leftPct);
-      if (rightNum) rightNum.textContent = String(rightPct);
-  
-      // reset dominance classes
-      scale.classList.remove("dominant-left", "dominant-right");
-  
-      const fillL = scale.querySelector(".mbti-fill.left");
-      const fillR = scale.querySelector(".mbti-fill.right");
-  
-      // Color only the dominant side
-      if (leftPct >= 50){
-        scale.classList.add("dominant-left");
+        const leftNum = scale.querySelector('[data-role="leftNum"]');
+        const rightNum = scale.querySelector('[data-role="rightNum"]');
+        if (leftNum) leftNum.textContent = String(leftPct);
+        if (rightNum) rightNum.textContent = String(rightPct);
+
+        const fillL = scale.querySelector(".mbti-fill.left");
+        const fillR = scale.querySelector(".mbti-fill.right");
         if (fillL) fillL.style.width = leftPct + "%";
-        if (fillR) fillR.style.width = "0%";
-      } else {
-        scale.classList.add("dominant-right");
         if (fillR) fillR.style.width = rightPct + "%";
-        if (fillL) fillL.style.width = "0%";
-      }
-    });
-  }
+      });
+    }
+
+    function animateMBTI(){
+      document.querySelectorAll(".mbti-scale").forEach(scale => {
+        const leftPct = Math.max(0, Math.min(100, Number(scale.dataset.leftpct || 50)));
+        const marker = scale.querySelector(".mbti-marker");
+        if (!marker) return;
+
+        // ✅ FIX: leftPct high => marker closer to LEFT
+        // leftPct=100 => 0%, leftPct=0 => 100%
+        const markerPos = 100 - leftPct;
+
+        marker.style.transition = "opacity 300ms ease 120ms, left 900ms cubic-bezier(.2,.8,.2,1)";
+        requestAnimationFrame(() => {
+          marker.style.left = markerPos + "%";
+          marker.style.opacity = "1";
+        });
+      });
+    }
 
     initMBTI();
 
