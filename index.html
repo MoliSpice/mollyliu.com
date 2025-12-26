@@ -11,20 +11,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
 
-  <!-- Favicon -->
-  <link rel="icon" href="/mollyportrait" type="image/jpeg">
-  <link rel="apple-touch-icon" href="/mollyportrait">
+  <!-- Favicon (update the path + extension if needed) -->
+  <link rel="icon" href="/mollyportrait.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="/mollyportrait.jpg">
   <meta name="theme-color" content="#ffffff">
 
   <style>
     :root{
+      /* Base */
       --bg:#ffffff;
-      --text:#0f172a;
+      --text:#0b1220;
       --muted:#334155;
       --faint:#64748b;
-      --border:rgba(15,23,42,0.10);
+      --border:rgba(15,23,42,0.12);
 
-      --card:rgba(255,255,255,0.88);
+      /* Surfaces */
+      --card:rgba(255,255,255,0.90);
       --radius:22px;
       --shadow-soft: 0 10px 25px rgba(15,23,42,0.08);
       --shadow: 0 18px 45px rgba(15,23,42,0.10);
@@ -32,29 +34,16 @@
 
       --max:1120px;
 
-      /* NEW THEME (blue / green / orange + a warm coral) */
-      --blue:  17, 138, 178;   /* #118AB2 */
-      --green:  6, 150, 105;   /* #069669-ish */
-      --orange: 245, 158, 11;  /* #F59E0B */
-      --coral: 239,  68, 68;   /* #EF4444 */
+      /* Brand palette (orange / blue / green) */
+      --blue:#2563eb;
+      --teal:#0ea5e9;
+      --green:#22c55e;
+      --orange:#f97316;
 
-      --accent-a: rgba(var(--blue), 0.95);
-      --accent-b: rgba(var(--orange), 0.85);
-      --accent-c: rgba(var(--green), 0.80);
-      --focus: rgba(var(--blue), 0.40);
-
-      /* UI gradients */
-      --accent-grad: linear-gradient(90deg,
-        rgba(var(--blue),0.95),
-        rgba(var(--green),0.75),
-        rgba(var(--orange),0.85)
-      );
-
-      /* MBTI scale colors */
-      --mbti-mind:   rgba(var(--blue), 0.95);
-      --mbti-nature: rgba(var(--green), 0.95);
-      --mbti-tactic: rgba(var(--orange), 0.95);
-      --mbti-ident:  rgba(var(--coral), 0.95);
+      /* Accent gradients */
+      --accent-grad: linear-gradient(90deg, rgba(249,115,22,.95), rgba(37,99,235,.92), rgba(34,197,94,.88));
+      --accent-soft: linear-gradient(90deg, rgba(249,115,22,.14), rgba(37,99,235,.12), rgba(34,197,94,.12));
+      --focus: rgba(37,99,235,0.35);
     }
 
     html { scroll-behavior: smooth; }
@@ -85,25 +74,25 @@
       }
     }
 
-    /* Background glow (updated palette) */
+    /* Background glow (no purple) */
     .glow{
       position:fixed;
       inset:-18%;
       z-index:-1;
       pointer-events:none;
-      filter: blur(70px);
-      opacity:.35;
+      filter: blur(80px);
+      opacity:.42;
       background:
-        radial-gradient(closest-side at 18% 22%, rgba(var(--blue),0.20), transparent 62%),
-        radial-gradient(closest-side at 82% 20%, rgba(var(--orange),0.16), transparent 60%),
-        radial-gradient(closest-side at 70% 85%, rgba(var(--green),0.14), transparent 62%),
-        radial-gradient(closest-side at 10% 80%, rgba(var(--coral),0.10), transparent 60%);
+        radial-gradient(closest-side at 18% 22%, rgba(37,99,235,0.16), transparent 62%),
+        radial-gradient(closest-side at 78% 18%, rgba(249,115,22,0.14), transparent 60%),
+        radial-gradient(closest-side at 70% 85%, rgba(34,197,94,0.12), transparent 62%),
+        radial-gradient(closest-side at 10% 80%, rgba(14,165,233,0.10), transparent 60%);
       animation: drift 16s ease-in-out infinite alternate, glowRotate 28s linear infinite;
       transform: translate3d(0,0,0);
     }
     @keyframes drift{
-      0%{ transform: translate(-1%, -1%) scale(1); opacity:.32; }
-      100%{ transform: translate(1%, 1%) scale(1.03); opacity:.40; }
+      0%{ transform: translate(-1%, -1%) scale(1); opacity:.38; }
+      100%{ transform: translate(1%, 1%) scale(1.03); opacity:.46; }
     }
     @keyframes glowRotate{
       0%{ rotate: 0deg; }
@@ -116,6 +105,7 @@
       padding:0 22px;
     }
 
+    /* Top banner */
     .top-note{
       display:flex;
       justify-content:center;
@@ -123,19 +113,20 @@
       font-size:14px;
       color:var(--faint);
       border-bottom:1px solid rgba(15,23,42,0.06);
-      background:rgba(255,255,255,0.65);
-      backdrop-filter: blur(8px);
+      background:rgba(255,255,255,0.70);
+      backdrop-filter: blur(10px);
       position:sticky;
       top:0;
       z-index:80;
     }
 
+    /* Nav */
     .nav{
       position:sticky;
       top:42px;
       z-index:75;
-      background:rgba(255,255,255,0.72);
-      backdrop-filter: blur(10px);
+      background:rgba(255,255,255,0.74);
+      backdrop-filter: blur(12px);
       border-bottom:1px solid rgba(15,23,42,0.06);
     }
     .nav-inner{
@@ -149,20 +140,21 @@
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight:600;
+      font-weight:650;
       white-space:nowrap;
     }
     .dot{
       width:10px;height:10px;border-radius:999px;
       background: var(--accent-grad);
-      box-shadow: 0 8px 20px rgba(var(--blue),0.25);
+      box-shadow: 0 10px 22px rgba(37,99,235,0.14);
       flex: 0 0 auto;
     }
 
+    /* Hamburger */
     .hamburger{
       display:none;
       border:1px solid var(--border);
-      background:rgba(255,255,255,0.85);
+      background:rgba(255,255,255,0.90);
       border-radius: 999px;
       padding: 10px 12px;
       cursor:pointer;
@@ -172,7 +164,7 @@
     .hamburger .lines span{
       position:absolute; left:0; right:0;
       height:2px; border-radius:999px;
-      background: rgba(15,23,42,0.70);
+      background: rgba(15,23,42,0.72);
       transition: transform .18s ease, top .18s ease, opacity .18s ease;
     }
     .hamburger .lines span:nth-child(1){ top:0; }
@@ -186,6 +178,7 @@
       justify-content:flex-end;
       align-items:center;
     }
+
     .navlinks a{
       color:var(--faint);
       text-decoration:none;
@@ -236,50 +229,37 @@
         padding:12px;
         border-radius: 18px;
         border:1px solid rgba(15,23,42,0.10);
-        background: rgba(255,255,255,0.90);
+        background: rgba(255,255,255,0.92);
         box-shadow: var(--shadow);
       }
       .navlinks.open{ display:flex; }
       .nav-inner{ position:relative; }
     }
 
+    /* Typography */
     h1{
       font-size: clamp(28px, 3.6vw, 55px);
       line-height: 1.05;
       letter-spacing: -0.02em;
       margin: 10px 0 12px;
-      font-weight: 600;
+      font-weight: 700;
     }
     h2{
       font-size: clamp(22px, 2.6vw, 34px);
       line-height:1.2;
       letter-spacing:-0.01em;
       margin:0 0 12px;
-      font-weight:600;
+      font-weight:700;
     }
-    h3{
-      margin:0 0 10px;
-      font-size:16px;
-      font-weight:600;
-      letter-spacing:-0.01em;
-    }
-    h4{
-      margin:0 0 8px;
-      font-size:16px;
-      font-weight:600;
-      letter-spacing:-0.01em;
-    }
-    p{
-      margin:0 0 16px;
-      font-size:18px;
-      color:var(--muted);
-    }
+    h3{ margin:0 0 10px; font-size:16px; font-weight:700; letter-spacing:-0.01em; }
+    h4{ margin:0 0 8px; font-size:16px; font-weight:700; letter-spacing:-0.01em; }
+    p{ margin:0 0 16px; font-size:18px; color:var(--muted); }
     .small{ font-size:14px; color:var(--faint); }
 
     .section-label{
-      font-size:16px;
-      font-weight:600;
-      letter-spacing:.10em;
+      font-size:15px;
+      font-weight:800;
+      letter-spacing:.12em;
       text-transform:uppercase;
       color:var(--faint);
       margin:0 0 10px;
@@ -288,6 +268,7 @@
     .prose{ max-width:62ch; }
     section{ padding:56px 0; }
 
+    /* Cards */
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -302,25 +283,22 @@
       transform: translateY(-4px);
       box-shadow: var(--shadow-hover);
     }
-
     .note{
-      background: rgba(248,250,252,0.86);
+      background: rgba(248,250,252,0.90);
       border: 1px solid rgba(15,23,42,0.10);
     }
-    .note:hover{
-      background: rgba(241,245,249,0.92);
-    }
+    .note:hover{ background: rgba(241,245,249,0.94); }
 
+    /* Hero */
     .hero{
       display:grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap:26px;
       align-items:start;
     }
-    @media (max-width: 900px){
-      .hero{ grid-template-columns:1fr; }
-    }
+    @media (max-width: 900px){ .hero{ grid-template-columns:1fr; } }
 
+    /* Buttons */
     .btnrow{
       display:flex;
       gap:10px;
@@ -334,18 +312,20 @@
       padding:10px 14px;
       border-radius:999px;
       border:1px solid var(--border);
-      background:rgba(255,255,255,0.92);
+      background:rgba(255,255,255,0.94);
       color:var(--text);
       text-decoration:none;
       box-shadow: 0 10px 18px rgba(15,23,42,0.06);
-      transition: transform .12s ease, box-shadow .12s ease;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
       font-size:14px;
     }
     .btn:hover{
       transform: translateY(-1px);
       box-shadow: var(--shadow-soft);
+      border-color: rgba(37,99,235,0.22);
     }
 
+    /* Quick facts */
     .facts{
       display:grid;
       gap:8px;
@@ -353,8 +333,9 @@
       font-size:15px;
       color:var(--muted);
     }
-    .facts b{ color:var(--text); font-weight:600; }
+    .facts b{ color:var(--text); font-weight:700; }
 
+    /* Portrait */
     .img-round{
       width:100%;
       display:block;
@@ -366,22 +347,20 @@
       background: rgba(15,23,42,0.06);
     }
 
+    /* Skeleton shimmer */
     .img-skeleton{ position:relative; overflow:hidden; border-radius:18px; }
     .img-skeleton::before{
       content:"";
       position:absolute;
       inset:0;
-      background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.7), rgba(255,255,255,0.0));
+      background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.72), rgba(255,255,255,0.0));
       transform: translateX(-100%);
       animation: shimmer 1.3s ease-in-out infinite;
     }
-    @keyframes shimmer{
-      0%{ transform: translateX(-100%); }
-      100%{ transform: translateX(100%); }
-    }
+    @keyframes shimmer{ 0%{ transform: translateX(-100%); } 100%{ transform: translateX(100%); } }
     .img-loaded.img-skeleton::before{ display:none; }
 
-    /* ===== MBTI (16personalities-style: dominant side colored, other side grey; each row has its own color) ===== */
+    /* ===== MBTI (16personalities-style) ===== */
     .mbti-card{ margin-top:14px; }
     .mbti-badge{
       display:inline-flex;
@@ -390,20 +369,20 @@
       padding:8px 12px;
       border-radius:999px;
       border:1px solid rgba(15,23,42,0.10);
-      background: rgba(var(--blue),0.10);
+      background: var(--accent-soft);
       font-size:13px;
       color: rgba(15,23,42,0.78);
       margin: 6px 0 12px;
     }
-    .mbti-badge b{ color: var(--text); font-weight:700; letter-spacing:0.04em; }
+    .mbti-badge b{ color: var(--text); font-weight:900; letter-spacing:0.05em; }
 
-    .mbti{ display:grid; gap:14px; margin-top:10px; }
+    .mbti{ display:grid; gap:16px; margin-top:10px; }
     .mbti-scale{ display:grid; gap:8px; }
 
     .mbti-head{
       display:grid;
       grid-template-columns: 90px 1fr 90px;
-      align-items:end;
+      align-items:center;
       gap:10px;
     }
 
@@ -411,26 +390,27 @@
       display:flex;
       align-items:baseline;
       gap:10px;
-      color: rgba(15,23,42,0.75);
+      color: rgba(15,23,42,0.78);
     }
     .mbti-side.right{ justify-content:flex-end; }
 
     .mbti-letter{
       font-size:18px;
-      font-weight:600;
+      font-weight:700;
       line-height:1;
-      color: var(--text);
+      color:var(--text);
     }
     .mbti-num{
       font-size:13px;
-      color: rgba(15,23,42,0.55);
-      font-weight:700;
+      color:rgba(15,23,42,0.60);
+      font-weight:800;
       min-width: 18px;
     }
+
     .mbti-label{
       text-align:center;
       font-size:14px;
-      color: rgba(15,23,42,0.55);
+      color: rgba(15,23,42,0.60);
     }
 
     .mbti-track{
@@ -438,50 +418,36 @@
       height:12px;
       border-radius:999px;
       background: rgba(15,23,42,0.06);
-      border:1px solid rgba(15,23,42,0.12);
+      border:1px solid rgba(15,23,42,0.14);
       overflow:hidden;
     }
 
+    /* One main colored fill (left trait), rest is grey like 16personalities */
     .mbti-fill{
       position:absolute;
       top:0; bottom:0;
       width:0%;
-      background: var(--scale-color);
+      left:0;
       opacity:0.95;
-    }
-    .mbti-fill.left{ left:0; }
-    .mbti-fill.right{ right:0; }
-
-    /* Mid tick */
-    .mbti-track::after{
-      content:"";
-      position:absolute;
-      left:50%;
-      top:-3px;
-      width:2px;
-      height:18px;
       border-radius:999px;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(15,23,42,0.26),
-        rgba(15,23,42,0.26) 3px,
-        transparent 3px,
-        transparent 6px
-      );
-      transform: translateX(-50%);
-      opacity:.55;
     }
 
-    /* Marker: white ring + colored center dot (per scale) */
+    /* Per-dimension colors (4 different colors) */
+    .mbti-scale[data-dim="mind"]    .mbti-fill{ background: rgba(14,165,233,0.78); } /* sky/blue */
+    .mbti-scale[data-dim="nature"]  .mbti-fill{ background: rgba(34,197,94,0.78); } /* green */
+    .mbti-scale[data-dim="tactics"] .mbti-fill{ background: rgba(249,115,22,0.82); } /* orange */
+    .mbti-scale[data-dim="identity"].mbti-fill{ background: rgba(37,99,235,0.80); } /* deeper blue */
+
+    /* Marker dot */
     .mbti-marker{
       position:absolute;
       top:50%;
       transform: translate(-50%,-50%);
-      width:16px; height:16px;
+      width:18px; height:18px;
       border-radius:999px;
       background:#fff;
-      border:2px solid rgba(15,23,42,0.18);
-      box-shadow: 0 10px 18px rgba(15,23,42,0.16);
+      border:2px solid rgba(15,23,42,0.22);
+      box-shadow: 0 12px 22px rgba(15,23,42,0.18);
       opacity:0;
       left:50%;
     }
@@ -490,28 +456,18 @@
       position:absolute;
       inset:3px;
       border-radius:999px;
-      background: var(--scale-color);
+      background: var(--accent-grad);
     }
-
-    /* Active side coloring for the numbers/letters (16personalities vibe) */
-    .mbti-side.is-dominant .mbti-num{ color: var(--scale-color); }
-    .mbti-side.is-dominant .mbti-letter{ color: var(--scale-color); }
-    .mbti-side.is-dominant{ color: rgba(15,23,42,0.85); }
 
     /* Tooltip */
-    .tooltip{
-      position:relative;
-      display:inline-flex;
-      align-items:baseline;
-      cursor:help;
-    }
+    .tooltip{ position:relative; display:inline-flex; align-items:baseline; cursor:help; }
     .tooltip[data-tip]::after{
       content: attr(data-tip);
       position:absolute;
       left:-6px;
       top: 120%;
-      background: rgba(15,23,42,0.88);
-      color: rgba(255,255,255,0.92);
+      background: rgba(15,23,42,0.90);
+      color: rgba(255,255,255,0.94);
       padding: 8px 10px;
       border-radius: 12px;
       font-size:12px;
@@ -522,7 +478,7 @@
       transform: translateY(-4px);
       pointer-events:none;
       transition: opacity .16s ease, transform .16s ease;
-      box-shadow: 0 18px 40px rgba(15,23,42,0.20);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
       z-index:20;
     }
     .tooltip:hover::after{ opacity:1; transform: translateY(0); }
@@ -538,7 +494,7 @@
     .mbti-details .mini{
       font-size: 13px;
       color: var(--muted);
-      background: rgba(248,250,252,0.85);
+      background: rgba(248,250,252,0.90);
       border:1px solid rgba(15,23,42,0.10);
       border-radius: 14px;
       padding: 10px 12px;
@@ -584,7 +540,7 @@
       bottom:10px;
       font-size:12px;
       color: rgba(255,255,255,0.92);
-      background: rgba(15,23,42,0.40);
+      background: rgba(15,23,42,0.42);
       border: 1px solid rgba(255,255,255,0.14);
       padding: 6px 10px;
       border-radius: 999px;
@@ -595,6 +551,7 @@
     }
     .tile:hover .label{ opacity:1; transform: translateY(0); }
 
+    /* Layout helpers */
     .grid-2{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px; }
     @media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
     .grid-3{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; }
@@ -605,7 +562,7 @@
       border:1px solid rgba(15,23,42,0.10);
       border-radius:var(--radius);
       padding:14px 14px 12px;
-      background: rgba(248,250,252,0.78);
+      background: rgba(248,250,252,0.82);
       box-shadow: 0 10px 18px rgba(15,23,42,0.05);
       transition: transform .18s ease, box-shadow .18s ease;
     }
@@ -620,6 +577,7 @@
     }
     .quote p{ margin:0 0 10px; }
 
+    /* Work section */
     .filters{
       display:flex;
       gap:10px;
@@ -628,24 +586,25 @@
     }
     .filter-btn{
       border:1px solid rgba(15,23,42,0.10);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.82);
       padding: 10px 12px;
       border-radius: 999px;
       cursor:pointer;
       font-family: inherit;
       color: var(--faint);
-      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease, border-color .14s ease;
     }
     .filter-btn:hover{
       transform: translateY(-1px);
       box-shadow: 0 10px 18px rgba(15,23,42,0.06);
       color: var(--text);
+      border-color: rgba(37,99,235,0.20);
     }
     .filter-btn[aria-pressed="true"]{
-      background: linear-gradient(90deg, rgba(var(--blue),.12), rgba(var(--green),.10), rgba(var(--orange),.10));
+      background: var(--accent-soft);
       color: var(--text);
-      border-color: rgba(var(--blue),0.22);
-      font-weight: 600;
+      border-color: rgba(249,115,22,0.25);
+      font-weight: 800;
     }
 
     .archive-grid{
@@ -660,7 +619,7 @@
       border:1px solid rgba(15,23,42,0.10);
       border-radius: var(--radius);
       padding: 14px 14px 12px;
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.90);
       box-shadow: 0 10px 18px rgba(15,23,42,0.05);
       transition: transform .18s ease, box-shadow .18s ease;
     }
@@ -673,9 +632,118 @@
       border:1px solid rgba(15,23,42,0.10);
       padding: 5px 9px;
       border-radius: 999px;
-      background: rgba(248,250,252,0.85);
+      background: rgba(248,250,252,0.90);
     }
 
+    /* ===== Influences (covers) ===== */
+    .influence-wrap{
+      border:1px solid rgba(15,23,42,0.10);
+      background: rgba(255,255,255,0.86);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .influence-head{
+      padding:16px 16px 12px;
+      border-bottom:1px solid rgba(15,23,42,0.08);
+      background: linear-gradient(90deg, rgba(249,115,22,0.10), rgba(37,99,235,0.08), rgba(34,197,94,0.08));
+    }
+    .influence-head .kicker{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(15,23,42,0.60);
+      font-weight:900;
+      margin-bottom:6px;
+    }
+    .influence-head .title{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,0.10);
+      background: rgba(255,255,255,0.78);
+      color: rgba(15,23,42,0.72);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .media-grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:12px;
+    }
+    @media (max-width: 980px){ .media-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    @media (max-width: 700px){ .media-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+
+    .media-card{
+      cursor: zoom-in;
+      border-radius: 18px;
+      border:1px solid rgba(15,23,42,0.10);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 10px 18px rgba(15,23,42,0.06);
+      overflow:hidden;
+      transition: transform .18s ease, box-shadow .18s ease;
+      position:relative;
+      min-height: 210px;
+      display:flex;
+      flex-direction:column;
+    }
+    .media-card:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .cover{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display:block;
+      background: rgba(15,23,42,0.06);
+    }
+    .media-meta{
+      padding:10px 10px 12px;
+      display:grid;
+      gap:4px;
+    }
+    .media-meta .name{
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:-0.01em;
+      color: var(--text);
+      line-height:1.2;
+    }
+    .media-meta .by{
+      font-size:12px;
+      color: rgba(15,23,42,0.62);
+      line-height:1.2;
+    }
+    .media-badge{
+      position:absolute;
+      top:10px;
+      left:10px;
+      font-size:11px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-weight:900;
+      padding:6px 9px;
+      border-radius:999px;
+      color: rgba(255,255,255,0.92);
+      border:1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+    }
+    .media-badge.book{ background: rgba(37,99,235,0.78); }
+    .media-badge.podcast{ background: rgba(249,115,22,0.82); }
+
+    /* Reveal */
     .reveal{
       opacity:0;
       transform: translateY(10px);
@@ -683,6 +751,7 @@
     }
     .reveal.fade-in{ opacity:1; transform: translateY(0); }
 
+    /* Footer */
     footer{
       padding:40px 0 46px;
       border-top:1px solid rgba(15,23,42,0.06);
@@ -697,13 +766,14 @@
       align-items:center;
     }
 
+    /* Floating Top button */
     .to-top{
       position: fixed;
       right: 18px;
       bottom: 18px;
       z-index: 90;
       border:1px solid rgba(15,23,42,0.10);
-      background: rgba(255,255,255,0.90);
+      background: rgba(255,255,255,0.92);
       border-radius: 999px;
       padding: 10px 12px;
       cursor:pointer;
@@ -721,10 +791,11 @@
       transform: translateY(0);
     }
 
+    /* Lightbox */
     .lightbox{
       position: fixed;
       inset: 0;
-      background: rgba(15,23,42,0.72);
+      background: rgba(15,23,42,0.74);
       display:none;
       align-items:center;
       justify-content:center;
@@ -753,7 +824,7 @@
       top:10px;
       right:10px;
       border:none;
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.90);
       border-radius: 999px;
       padding: 10px 12px;
       cursor:pointer;
@@ -764,7 +835,7 @@
       position:absolute;
       left:12px;
       bottom:12px;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255,255,255,0.94);
       background: rgba(15,23,42,0.44);
       border:1px solid rgba(255,255,255,0.14);
       padding: 8px 12px;
@@ -816,7 +887,6 @@
             I’m a Finance + AI student at Emory University. I’m curious about how ideas turn into real impact — how stories, systems, and people shape the world around us.
           </p>
 
-          <!-- NOTE CARD -->
           <div class="card note reveal" style="margin-top:14px;">
             <h3 style="margin-bottom:8px;">Why this site exists</h3>
             <p style="margin-bottom:0;">
@@ -831,83 +901,75 @@
             <div class="mbti-badge">Type: <b>ENTJ</b></div>
 
             <div class="mbti" id="mbti">
-              <!-- IMPORTANT:
-                   data-leftpct = LEFT letter percentage (like 73% Extraverted)
-                   data-color = one of: mind, nature, tactic, ident
-              -->
-
-              <div class="mbti-scale" data-color="mind" data-left="E" data-right="I" data-leftpct="70" aria-label="Source of energy">
+              <!-- data-leftpct is the LEFT TRAIT percent (matches 16personalities feel) -->
+              <div class="mbti-scale" data-dim="mind" data-left="E" data-right="I" data-leftpct="70" aria-label="Source of energy">
                 <div class="mbti-head">
                   <div class="mbti-side left">
-                    <span class="mbti-letter tooltip" data-tip="E: energized by people + external world.">E</span>
-                    <span class="mbti-num" data-role="leftNum">70%</span>
+                    <span class="mbti-letter tooltip" data-tip="E: energized by people + the external world.">E</span>
+                    <span class="mbti-num" data-role="leftNum">70</span>
                   </div>
                   <div class="mbti-label">Source of energy</div>
                   <div class="mbti-side right">
-                    <span class="mbti-num" data-role="rightNum">30%</span>
-                    <span class="mbti-letter tooltip" data-tip="I: energized by ideas + inner world.">I</span>
+                    <span class="mbti-num" data-role="rightNum">30</span>
+                    <span class="mbti-letter tooltip" data-tip="I: energized by ideas + the inner world.">I</span>
                   </div>
                 </div>
                 <div class="mbti-track">
-                  <div class="mbti-fill left"></div>
-                  <div class="mbti-fill right"></div>
+                  <div class="mbti-fill"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
 
-              <div class="mbti-scale" data-color="nature" data-left="S" data-right="N" data-leftpct="15" aria-label="Way of gathering information">
+              <div class="mbti-scale" data-dim="nature" data-left="N" data-right="S" data-leftpct="85" aria-label="Way of gathering information">
                 <div class="mbti-head">
                   <div class="mbti-side left">
-                    <span class="mbti-letter tooltip" data-tip="S: facts + concrete details.">S</span>
-                    <span class="mbti-num" data-role="leftNum">15%</span>
+                    <span class="mbti-letter tooltip" data-tip="N: patterns + future possibilities.">N</span>
+                    <span class="mbti-num" data-role="leftNum">85</span>
                   </div>
                   <div class="mbti-label">Way of gathering information</div>
                   <div class="mbti-side right">
-                    <span class="mbti-num" data-role="rightNum">85%</span>
-                    <span class="mbti-letter tooltip" data-tip="N: patterns + future possibilities.">N</span>
+                    <span class="mbti-num" data-role="rightNum">15</span>
+                    <span class="mbti-letter tooltip" data-tip="S: facts + concrete details.">S</span>
                   </div>
                 </div>
                 <div class="mbti-track">
-                  <div class="mbti-fill left"></div>
-                  <div class="mbti-fill right"></div>
+                  <div class="mbti-fill"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
 
-              <div class="mbti-scale" data-color="tactic" data-left="T" data-right="F" data-leftpct="69" aria-label="Decision making">
+              <div class="mbti-scale" data-dim="tactics" data-left="T" data-right="F" data-leftpct="69" aria-label="Decision making">
                 <div class="mbti-head">
                   <div class="mbti-side left">
                     <span class="mbti-letter tooltip" data-tip="T: logic + analysis.">T</span>
-                    <span class="mbti-num" data-role="leftNum">69%</span>
+                    <span class="mbti-num" data-role="leftNum">69</span>
                   </div>
                   <div class="mbti-label">Decision making</div>
                   <div class="mbti-side right">
-                    <span class="mbti-num" data-role="rightNum">31%</span>
-                    <span class="mbti-letter tooltip" data-tip="F: values + personal impact.">F</span>
+                    <span class="mbti-num" data-role="rightNum">31</span>
+                    <span class="mbti-letter tooltip" data-tip="F: values + people impact.">F</span>
                   </div>
                 </div>
                 <div class="mbti-track">
-                  <div class="mbti-fill left"></div>
-                  <div class="mbti-fill right"></div>
+                  <div class="mbti-fill"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
 
-              <div class="mbti-scale" data-color="ident" data-left="J" data-right="P" data-leftpct="60" aria-label="How you relate to the external world">
+              <div class="mbti-scale" data-dim="identity" data-left="J" data-right="P" data-leftpct="60" aria-label="How you relate to the external world">
                 <div class="mbti-head">
                   <div class="mbti-side left">
-                    <span class="mbti-letter tooltip" data-tip="J: plans + decisions.">J</span>
-                    <span class="mbti-num" data-role="leftNum">60%</span>
+                    <span class="mbti-letter tooltip" data-tip="J: structure + plans.">J</span>
+                    <span class="mbti-num" data-role="leftNum">60</span>
                   </div>
                   <div class="mbti-label">How you relate to the external world</div>
                   <div class="mbti-side right">
-                    <span class="mbti-num" data-role="rightNum">40%</span>
-                    <span class="mbti-letter tooltip" data-tip="P: options + flexibility.">P</span>
+                    <span class="mbti-num" data-role="rightNum">40</span>
+                    <span class="mbti-letter tooltip" data-tip="P: flexibility + options.">P</span>
                   </div>
                 </div>
                 <div class="mbti-track">
-                  <div class="mbti-fill left"></div>
-                  <div class="mbti-fill right"></div>
+                  <div class="mbti-fill"></div>
                   <div class="mbti-marker"></div>
                 </div>
               </div>
@@ -942,20 +1004,20 @@
 
           <!-- Gallery -->
           <div class="gallery reveal" aria-label="Photo gallery" id="gallery">
-            <div class="tile one" data-caption="business" data-full="/bschool">
-              <img loading="lazy" src="/bschool" alt="Molly portrait at business school">
+            <div class="tile one" data-caption="business" data-full="/bschool.jpg">
+              <img loading="lazy" src="/bschool.jpg" alt="Molly portrait at business school">
               <div class="label">business</div>
             </div>
-            <div class="tile two" data-caption="theatre" data-full="/theatre">
-              <img loading="lazy" src="/theatre" alt="Molly on stage">
+            <div class="tile two" data-caption="theatre" data-full="/theatre.jpg">
+              <img loading="lazy" src="/theatre.jpg" alt="Molly on stage">
               <div class="label">theatre</div>
             </div>
-            <div class="tile three" data-caption="explorer" data-full="/hiking">
-              <img loading="lazy" src="/hiking" alt="Molly hiking in the mountains">
+            <div class="tile three" data-caption="explorer" data-full="/hiking.jpg">
+              <img loading="lazy" src="/hiking.jpg" alt="Molly hiking in the mountains">
               <div class="label">explorer</div>
             </div>
-            <div class="tile four" data-caption="risk" data-full="/skydive">
-              <img loading="lazy" src="/skydive" alt="Molly skydiving">
+            <div class="tile four" data-caption="risk" data-full="/skydive.jpg">
+              <img loading="lazy" src="/skydive.jpg" alt="Molly skydiving">
               <div class="label">risk</div>
             </div>
           </div>
@@ -966,7 +1028,7 @@
           <h3>Quick facts</h3>
 
           <div class="img-skeleton" id="portraitSkeleton" style="margin-bottom:14px;">
-            <img loading="lazy" class="img-round" src="/mollyportrait" alt="Molly portrait">
+            <img loading="lazy" class="img-round" src="/mollyportrait.jpg" alt="Molly portrait">
           </div>
 
           <div class="facts">
@@ -1052,369 +1114,4 @@
         <div class="card">
           <h3>I’m a service learner.</h3>
           <p style="margin-bottom:10px;">
-            I care deeply about education, especially for girls. Growing up in a traditional Eastern household where boys were often valued over girls shaped my belief that talent is everywhere, but access is not.
-            That belief led me to found <em>Spotlaw</em>, a theatre-based legal education project that uses storytelling and performance to help students understand the law, question dominant narratives, and recognize their rights.
-          </p>
-          <div class="small">Spotlaw: <a href="https://spotlaw.org" target="_blank" rel="noreferrer">spotlaw.org</a></div>
-        </div>
-
-        <div class="card">
-          <h3>I’m still becoming.</h3>
-          <p style="margin-bottom:0;">
-            I don’t think of myself as finished or fixed. I’m more interested in direction than labels.
-            What stays constant is my curiosity — about the world, about people, and about how ideas turn into reality.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PHILOSOPHY -->
-    <section id="philosophy" aria-label="Life Philosophy" class="reveal">
-      <div class="section-label">Life Philosophy</div>
-      <h2>A few beliefs I try to live by</h2>
-
-      <div class="grid-3">
-        <div class="p-card"><strong>Make the world clearer.</strong><span>If I understand it deeply, I can explain it simply.</span></div>
-        <div class="p-card"><strong>Chase truth, not vibes.</strong><span>I’d rather learn fast than be confidently wrong.</span></div>
-        <div class="p-card"><strong>Risk is something to study.</strong><span>Fear isn’t a stop sign — it’s information.</span></div>
-        <div class="p-card"><strong>Stay ambitious, stay human.</strong><span>Grow upward without losing empathy downward.</span></div>
-        <div class="p-card"><strong>Let good ideas earn scale.</strong><span>Execution is where purpose becomes real.</span></div>
-        <div class="p-card"><strong>Keep expanding perspective.</strong><span>Places and people change how I see.</span></div>
-      </div>
-    </section>
-
-    <!-- READS -->
-    <section id="reads" aria-label="Reads & Listens" class="reveal">
-      <div class="section-label">Reads & Listens</div>
-      <h2>Influences</h2>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Books</h3>
-          <ul>
-            <li><em>Principles</em> — Ray Dalio</li>
-            <li><em>The Courage to Be Disliked</em></li>
-            <li><em>When Breath Becomes Air</em></li>
-            <li><em>The Art of War</em></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Podcasts</h3>
-          <ul>
-            <li><em>How I Built This</em></li>
-            <li><em>Invest Like the Best</em></li>
-            <li><em>Planet Money</em></li>
-            <li><em>绝对是个妞：国际月经简报</em></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section id="work" aria-label="Work & Writing" class="reveal">
-      <div class="section-label">Work</div>
-      <h2>Archive</h2>
-
-      <p class="small">A place to keep what I’m working on and what I’m learning.</p>
-
-      <div class="filters" role="toolbar" aria-label="Filters">
-        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter-btn" data-filter="finance" aria-pressed="false">Finance</button>
-        <button class="filter-btn" data-filter="tech" aria-pressed="false">Crypto & Tech</button>
-        <button class="filter-btn" data-filter="life" aria-pressed="false">Life</button>
-      </div>
-
-      <div class="archive-grid" id="archiveGrid">
-        <article class="item" data-tags="finance">
-          <h4>Pitches <span class="small">· 2025</span></h4>
-          <p>Update later</p>
-          <div class="tagrow"><span class="tag">Finance</span><span class="tag">Template</span></div>
-        </article>
-
-        <article class="item" data-tags="tech">
-          <h4>Research Paper <span class="small">· 2025</span></h4>
-          <p>Update later</p>
-          <div class="tagrow"><span class="tag">Technology</span><span class="tag">Systems</span></div>
-        </article>
-
-        <article class="item" data-tags="life">
-          <h4>Portfolio <span class="small">· 2025</span></h4>
-          <p>Update later</p>
-          <div class="tagrow"><span class="tag">Life</span><span class="tag">Travel</span></div>
-        </article>
-
-        <article class="item" data-tags="life">
-          <h4>Thoughts Lately <span class="small">· 2025</span></h4>
-          <p>Update later</p>
-          <div class="tagrow"><span class="tag">Life</span><span class="tag">Mindset</span></div>
-        </article>
-
-        <article class="item" data-tags="finance">
-          <h4>Industry Research <span class="small">· 2025</span></h4>
-          <p>Update later</p>
-          <div class="tagrow"><span class="tag">Finance</span><span class="tag">Storytelling</span></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONNECT -->
-    <section id="connect" aria-label="Connect" class="reveal">
-      <div class="section-label">Connect</div>
-      <h2>Let’s connect</h2>
-      <div class="prose">
-        <p>If you want to talk about ideas, projects, or anything I’m working on, feel free to reach out.</p>
-      </div>
-
-      <div class="btnrow">
-        <a class="btn" href="mailto:mollyliu106@gmail.com">Email</a>
-        <a class="btn" href="https://www.linkedin.com/in/mollyliu10/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="https://x.com/MollySpiceL" target="_blank" rel="noreferrer">X</a>
-        <a class="btn" href="https://www.instagram.com/molly_jyliu/" target="_blank" rel="noreferrer">Instagram</a>
-      </div>
-    </section>
-
-    <footer class="reveal">
-      <div class="footer-row">
-        <div>© <span id="year"></span> Molly Liu</div>
-        <div>Built on GitHub + Vercel</div>
-      </div>
-    </footer>
-  </main>
-
-  <button class="to-top" id="toTop" aria-label="Back to top">↑ Top</button>
-
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Image preview">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
-      <img id="lightboxImg" alt="">
-      <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-  </div>
-
-  <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Hamburger nav
-    const hamburger = document.getElementById("hamburger");
-    const navlinks = document.getElementById("navlinks");
-    hamburger?.addEventListener("click", () => {
-      const open = navlinks.classList.toggle("open");
-      hamburger.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    navlinks?.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => {
-        if (navlinks.classList.contains("open")) {
-          navlinks.classList.remove("open");
-          hamburger.setAttribute("aria-expanded", "false");
-        }
-      });
-    });
-
-    // Work filter
-    const buttons = document.querySelectorAll(".filter-btn[data-filter]");
-    const items = Array.from(document.querySelectorAll(".item"));
-    function setActive(btn){
-      buttons.forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
-    }
-    function applyFilter(tag){
-      items.forEach(el => {
-        const tags = (el.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
-        const show = tag === "all" || tags.includes(tag);
-        el.style.display = show ? "" : "none";
-      });
-    }
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const tag = btn.getAttribute("data-filter");
-        setActive(btn);
-        applyFilter(tag);
-      });
-    });
-
-    // Floating "Top" button
-    const toTop = document.getElementById("toTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 600) toTop.classList.add("show");
-      else toTop.classList.remove("show");
-    }, { passive: true });
-    toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-    // Reveal on enter
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("fade-in");
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll(".reveal, .card, .item, .p-card").forEach(el => revealObs.observe(el));
-
-    // Active nav state
-    const navMap = new Map();
-    document.querySelectorAll(".navlinks a[data-section]").forEach(a => navMap.set(a.dataset.section, a));
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.id;
-        navMap.forEach(a => a.classList.remove("active"));
-        const activeLink = navMap.get(id);
-        if (activeLink) activeLink.classList.add("active");
-      });
-    }, { threshold: 0.35 });
-    ["north-star","who","philosophy","reads","work","connect"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) sectionObserver.observe(el);
-    });
-
-    // ===== MBTI (16personalities-style) =====
-    function cssVarForScale(colorKey){
-      switch (String(colorKey || "").toLowerCase()){
-        case "mind":   return "var(--mbti-mind)";
-        case "nature": return "var(--mbti-nature)";
-        case "tactic": return "var(--mbti-tactic)";
-        case "ident":  return "var(--mbti-ident)";
-        default:       return "var(--mbti-mind)";
-      }
-    }
-
-    function initMBTI(){
-      document.querySelectorAll(".mbti-scale").forEach(scale => {
-        const leftPct = Math.max(0, Math.min(100, Number(scale.dataset.leftpct || 50)));
-        const rightPct = 100 - leftPct;
-
-        // Set per-row color
-        scale.style.setProperty("--scale-color", cssVarForScale(scale.dataset.color));
-
-        // Determine dominant side like 16personalities
-        const leftDominant = leftPct >= 50;
-        const dominantPct = leftDominant ? leftPct : rightPct;
-
-        // Numbers (with %)
-        const leftNum = scale.querySelector('[data-role="leftNum"]');
-        const rightNum = scale.querySelector('[data-role="rightNum"]');
-        if (leftNum) leftNum.textContent = leftPct + "%";
-        if (rightNum) rightNum.textContent = rightPct + "%";
-
-        // Apply dominant styles to the correct side
-        const leftSide = scale.querySelector(".mbti-side.left");
-        const rightSide = scale.querySelector(".mbti-side.right");
-        leftSide?.classList.toggle("is-dominant", leftDominant);
-        rightSide?.classList.toggle("is-dominant", !leftDominant);
-
-        // Fill: ONLY the dominant side is colored; other side stays grey (like your screenshots)
-        const fillL = scale.querySelector(".mbti-fill.left");
-        const fillR = scale.querySelector(".mbti-fill.right");
-
-        if (fillL) fillL.style.width = leftDominant ? (dominantPct + "%") : "0%";
-        if (fillR) fillR.style.width = (!leftDominant) ? (dominantPct + "%") : "0%";
-      });
-    }
-
-    function animateMBTI(){
-      document.querySelectorAll(".mbti-scale").forEach(scale => {
-        const leftPct = Math.max(0, Math.min(100, Number(scale.dataset.leftpct || 50)));
-        const rightPct = 100 - leftPct;
-
-        const leftDominant = leftPct >= 50;
-        const dominantPct = leftDominant ? leftPct : rightPct;
-
-        const marker = scale.querySelector(".mbti-marker");
-        if (!marker) return;
-
-        // Marker position = boundary between colored and grey
-        // If left dominates: boundary at leftPct
-        // If right dominates: boundary at (100 - rightPct) = leftPct
-        const boundary = leftPct; // same either way
-
-        marker.style.transition = "opacity 250ms ease 120ms, left 850ms cubic-bezier(.2,.8,.2,1)";
-        requestAnimationFrame(() => {
-          marker.style.left = boundary + "%";
-          marker.style.opacity = "1";
-        });
-      });
-    }
-
-    initMBTI();
-
-    const mbtiEl = document.getElementById("mbti");
-    if (mbtiEl){
-      const mbtiObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting){
-            animateMBTI();
-            mbtiObs.disconnect();
-          }
-        });
-      }, { threshold: 0.25 });
-      mbtiObs.observe(mbtiEl);
-    }
-
-    // MBTI details toggle
-    const mbtiToggle = document.getElementById("mbtiToggle");
-    const mbtiDetails = document.getElementById("mbtiDetails");
-    mbtiToggle?.addEventListener("click", () => {
-      const pressed = mbtiToggle.getAttribute("aria-pressed") === "true";
-      mbtiToggle.setAttribute("aria-pressed", pressed ? "false" : "true");
-      mbtiDetails.classList.toggle("open");
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightboxImg");
-    const lightboxCaption = document.getElementById("lightboxCaption");
-    const lightboxClose = document.getElementById("lightboxClose");
-
-    function openLightbox(src, caption, alt){
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || caption || "Photo";
-      lightboxCaption.textContent = caption || "";
-      lightbox.classList.add("open");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
-    function closeLightbox(){
-      lightbox.classList.remove("open");
-      lightbox.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      lightboxImg.src = "";
-    }
-
-    document.querySelectorAll(".tile").forEach(tile => {
-      tile.addEventListener("click", () => {
-        const full = tile.getAttribute("data-full");
-        const cap = tile.getAttribute("data-caption");
-        const img = tile.querySelector("img");
-        openLightbox(full, cap, img?.alt || cap);
-      });
-    });
-
-    lightboxClose?.addEventListener("click", closeLightbox);
-    lightbox?.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-    window.addEventListener("keydown", (e) => { if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox(); });
-
-    // Subtle parallax
-    const imgs = Array.from(document.querySelectorAll(".tile img"));
-    function parallax(){
-      const vh = window.innerHeight;
-      imgs.forEach(img => {
-        const rect = img.getBoundingClientRect();
-        const mid = rect.top + rect.height / 2;
-        const amt = (mid - vh / 2) / (vh / 2);
-        const px = Math.max(-10, Math.min(10, -amt * 8));
-        img.style.setProperty("--parallax", px + "px");
-      });
-    }
-    window.addEventListener("scroll", () => requestAnimationFrame(parallax), { passive:true });
-    window.addEventListener("resize", () => requestAnimationFrame(parallax));
-    requestAnimationFrame(parallax);
-
-    // Skeleton removal
-    const portrait = document.querySelector(".img-round");
-    const skeletonWrap = document.getElementById("portraitSkeleton");
-    if (portrait && skeletonWrap){
-      skeletonWrap.classList.add("img-skeleton");
-      if (portrait.complete) skeletonWrap.classList.add("img-loaded");
-      portrait.addEventListener("load", () => skeletonWrap.classList.add("img-loaded"));
-    }
-  </script>
-</body>
-</html>
+            I care deeply about education, especially for girls. Growing up in a traditional Eastern household where boys were often valued over girls
